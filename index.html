@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yunaki — AI automation for law firms</title>
+<meta name="description" content="Yunaki automates intake, forms, and filings for law firms. Deterministic on facts, fees, and deadlines. Every outcome becomes firm memory.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="frame">
+
+  <header class="topbar">
+    <a class="brand" href="index.html">YUNAKI <span>/ law-firm automation</span></a>
+    <nav class="topnav">
+      <a href="how-it-works.html">How it works</a>
+      <a href="case-files.html">Case files</a>
+      <a href="#practices">Practice areas</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-solid" href="contact.html">Book a pilot ↗</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="kicker">
+      <span>DWG.001 · LAW-FIRM AUTOMATION · DETERMINISTIC</span>
+      <span>|</span>
+      <span class="live"><span class="dot"></span> PILOTS OPEN</span>
+    </div>
+    <h1>Automation that <span class="hl">never</span> <span class="hl">guesses</span> your cases.</h1>
+    <p class="lead">
+      Yunaki automates intake, forms, and filings for law firms.
+      <strong>Facts, fees, and deadlines come from a deterministic engine.</strong>
+      Language models draft. They never decide.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn btn-solid" href="case-files.html">See the case files →</a>
+      <a class="btn" href="how-it-works.html">How it works</a>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>SSDI initial denials: 64% (FY 2025)</span>
+      <span>I-130 denials: 28.4% → 41.6% in one year</span>
+      <span>48% of Chapter 13 filings dismissed</span>
+      <span>workers comp: 40% initial claim error rate</span>
+      <span>one immigration RFE = $3,000 to $8,000 attorney time</span>
+      <span>$262B in healthcare claims denied annually</span>
+      <span>65% of SSDI denials are preventable</span>
+      <span>LLMs wrong on immigration facts ~35% of the time</span>
+      <span>missed RFE deadline = automatic denial, no refund</span>
+      <span>SSDI initial denials: 64% (FY 2025)</span>
+      <span>I-130 denials: 28.4% → 41.6% in one year</span>
+      <span>48% of Chapter 13 filings dismissed</span>
+      <span>workers comp: 40% initial claim error rate</span>
+      <span>one immigration RFE = $3,000 to $8,000 attorney time</span>
+      <span>$262B in healthcare claims denied annually</span>
+      <span>65% of SSDI denials are preventable</span>
+      <span>LLMs wrong on immigration facts ~35% of the time</span>
+      <span>missed RFE deadline = automatic denial, no refund</span>
+    </div>
+  </div>
+
+  <section class="split" id="problem">
+    <div>
+      <div class="seclabel">§01 · the problem</div>
+      <h2>Legal paperwork fails at industrial scale.</h2>
+      <div class="prose">
+        <ul class="list">
+          <li>The same client data is retyped into 5 to 15 forms. No tool checks that it matches.</li>
+          <li>When an attorney leaves, the knowledge of what worked leaves too.</li>
+          <li>Most errors are deterministic: wrong edition, bad math, mismatched dates.</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="statrow">
+        <div class="stat">
+          <div class="num">64<span class="unit">%</span></div>
+          <div class="lbl">SSDI claims denied at initial level (FY 2025)</div>
+        </div>
+        <div class="stat">
+          <div class="num">48<span class="unit">%</span></div>
+          <div class="lbl">Chapter 13 filings dismissed outright</div>
+        </div>
+        <div class="stat">
+          <div class="num">$3-8<span class="unit">K</span></div>
+          <div class="lbl">attorney cost of one immigration RFE</div>
+        </div>
+      </div>
+      <p class="stat-note">
+        sources: SSA.gov FY2025 · US courts 2025 · AILA / USCIS.
+        <strong>most of it is preventable.</strong>
+      </p>
+    </div>
+  </section>
+
+  <section class="sec-pad" id="how">
+    <div class="seclabel">§02 · how it works</div>
+    <h2>Upload the documents. The engine does the rest.</h2>
+    <div class="prose">
+      <p>Watch it run: a passport goes in, validated forms come out.</p>
+    </div>
+
+    <figure class="fig">
+      <div class="pipeline" role="img" aria-label="Animation: a firm uploads a passport, the deterministic engine extracts and verifies the data, and the immigration forms are populated and validated.">
+        <div class="pl-stage" aria-hidden="true">
+          <div class="pl-cardlabel">Firm uploads</div>
+          <div class="pl-card">
+            <div class="pl-doctitle">Passport</div>
+            <div class="pl-line w80"></div>
+            <div class="pl-line w60 d2"></div>
+            <div class="pl-line w70 d3"></div>
+            <div class="pl-chip">+ I-94 · pay stubs · prior filings</div>
+          </div>
+        </div>
+        <div class="pl-flow" aria-hidden="true"><span class="pl-dot"></span></div>
+        <div class="pl-stage" aria-hidden="true">
+          <div class="pl-cardlabel">Yunaki processes</div>
+          <div class="pl-card">
+            <div class="pl-check">extract every field</div>
+            <div class="pl-check c2">verify fees + form editions</div>
+            <div class="pl-check c3">cross-check names + dates</div>
+          </div>
+        </div>
+        <div class="pl-flow pl-flow2" aria-hidden="true"><span class="pl-dot"></span></div>
+        <div class="pl-stage" aria-hidden="true">
+          <div class="pl-cardlabel">Forms populated</div>
+          <div class="pl-card">
+            <div class="pl-field"><span>I-130</span><i></i></div>
+            <div class="pl-field f2"><span>I-485</span><i></i></div>
+            <div class="pl-field f3"><span>I-864</span><i></i></div>
+            <div class="pl-stamp">VALIDATED</div>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-cap">
+        <strong>Fig. 1 · The Yunaki loop.</strong> Deterministic extraction, one master
+        record, every field cross-checked before filing. Each outcome feeds back
+        into firm memory.
+      </figcaption>
+    </figure>
+
+    <div class="duo">
+      <div>
+        <div class="card-label">ON EVERY CASE</div>
+        <p>Memory recalls what worked. Forms are populated and cross-checked before filing.</p>
+      </div>
+      <div>
+        <div class="card-label">ON EVERY OUTCOME</div>
+        <p>Approvals reinforce patterns. RFEs update checklists. Denials flag failure modes.</p>
+      </div>
+    </div>
+
+    <div class="after-fig-cta">
+      <a class="btn btn-solid" href="case-files.html">See it for every case study →</a>
+      <a class="btn" href="how-it-works.html">Read the full architecture</a>
+    </div>
+  </section>
+
+  <section class="sec-pad" id="practices">
+    <div class="seclabel">§03 · practice areas</div>
+    <h2>One engine. Every paperwork-heavy practice.</h2>
+    <div class="prose">
+      <p>Same failure pattern everywhere: high-volume forms, deterministic rules, brutal penalties for small errors.</p>
+    </div>
+
+    <div class="practices">
+      <div class="practice">
+        <div class="practice-head"><h3>Immigration</h3><span class="chip chip-live">Pilots open</span></div>
+        <p><strong>I-130 denials jumped 28.4% → 41.6%</strong> in FY 2025.</p>
+        <ul class="list">
+          <li>Full concurrent packages: I-130 · I-485 · I-864 · I-765 · I-131</li>
+          <li>Cross-form consistency against one master record</li>
+          <li>Pre-flight RFE risk score + RFE response memory</li>
+        </ul>
+      </div>
+      <div class="practice">
+        <div class="practice-head"><h3>SSDI / SSI Disability</h3><span class="chip">In development</span></div>
+        <p><strong>64% of ~2M annual claims are denied initially.</strong> 65% preventable.</p>
+        <ul class="list">
+          <li>SGA income math, onset-date vs. DLI validation</li>
+          <li>Form completeness: SSA-3368 · 3369 · 827 · 3373</li>
+          <li>Approval probability score + deficiency list</li>
+        </ul>
+      </div>
+      <div class="practice">
+        <div class="practice-head"><h3>Bankruptcy</h3><span class="chip">Roadmap</span></div>
+        <p><strong>48% of Chapter 13 cases get dismissed.</strong> Often on pure arithmetic.</p>
+        <ul class="list">
+          <li>Means test (Form 122A/B/C) as pure math</li>
+          <li>Schedule I = Schedule J = means test consistency</li>
+          <li>Credit report vs. listed debts completeness</li>
+        </ul>
+      </div>
+      <div class="practice">
+        <div class="practice-head"><h3>Workers Compensation</h3><span class="chip">Roadmap</span></div>
+        <p><strong>40% of initial claim submissions contain errors.</strong> No dedicated tool exists.</p>
+        <ul class="list">
+          <li>Injury description = medical bills = CPT codes</li>
+          <li>Wage records vs. employer report reconciliation</li>
+          <li>State fee schedules + timely-filing deadlines</li>
+        </ul>
+      </div>
+      <div class="practice">
+        <div class="practice-head"><h3>Personal Injury / MVA</h3><span class="chip">Roadmap</span></div>
+        <p><strong>The facts inside every demand package,</strong> handled deterministically.</p>
+        <ul class="list">
+          <li>Intake extraction from crash reports + medical records</li>
+          <li>Chronologies with verified dates and bills</li>
+          <li>Deadline tracking + demand-package assembly</li>
+        </ul>
+      </div>
+      <div class="practice">
+        <div class="practice-head"><h3>Healthcare Claims</h3><span class="chip">Roadmap</span></div>
+        <p><strong>$262B in claims denied annually.</strong> 85% preventable.</p>
+        <ul class="list">
+          <li>Claim pre-flight for CMS-1500 / UB-04</li>
+          <li>Diagnosis = operative report = medical record</li>
+          <li>Payer-rule and timely-filing validation</li>
+        </ul>
+      </div>
+      <div class="practice-foot">
+        one engine: <strong>deterministic validation + firm memory.</strong>
+        a new practice area is a playbook away, not a new product.
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-pad" id="proof">
+    <div class="seclabel">§04 · proof</div>
+    <h2>Case files, not testimonials.</h2>
+    <div class="prose">
+      <p>No invented clients. Every number is public and sourced.</p>
+    </div>
+
+    <div class="cf-grid">
+      <a class="cf-card" href="case-files.html#cf-01">
+        <span class="cf-id">CF-01 · IMMIGRATION</span>
+        <h3>The $8,000 letter</h3>
+        <p>One RFE burns 10 to 15 attorney hours and adds months of delay. Miss the deadline and the case is denied.</p>
+        <span class="cf-go">Read case file →</span>
+      </a>
+      <a class="cf-card" href="case-files.html#cf-03">
+        <span class="cf-id">CF-03 · DISABILITY</span>
+        <h3>The 64% wall</h3>
+        <p>Two million SSDI claims a year. 64% denied at first pass. 65% of those denials were preventable.</p>
+        <span class="cf-go">Read case file →</span>
+      </a>
+      <a class="cf-card" href="case-files.html#cf-04">
+        <span class="cf-id">CF-04 · BANKRUPTCY</span>
+        <h3>Dismissed on arithmetic</h3>
+        <p>48% of Chapter 13 cases are thrown out. Means-test math and mismatched schedules do most of the damage.</p>
+        <span class="cf-go">Read case file →</span>
+      </a>
+    </div>
+
+    <div class="after-fig-cta">
+      <a class="btn" href="case-files.html">All five case files →</a>
+    </div>
+  </section>
+
+  <section class="cta-band" id="pilot">
+    <div class="seclabel">§05 · pilots</div>
+    <h2>We're onboarding five pilot firms.</h2>
+    <p class="lead">
+      Immigration first. Full package validation, free during the pilot.
+      The memory the system builds stays yours.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn btn-solid" href="contact.html">Book a pilot ↗</a>
+      <a class="btn" href="case-files.html">Read the case files</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="fcol"><strong>YUNAKI</strong> · © 2026 · built by two founders</div>
+    <div class="fcol">your cases · your rules · your memory</div>
+    <div class="fcol">
+      <a href="how-it-works.html">how it works</a> ·
+      <a href="case-files.html">case files</a> ·
+      <a href="contact.html">book a pilot</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
