@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How it works — Yunaki</title>
+<meta name="description" content="The Yunaki architecture: a deterministic engine for facts, fees, and deadlines. Language models draft only. Attorneys approve everything before it moves.">
+<link rel="canonical" href="https://yunaki.tech/how-it-works.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yunaki">
+<meta property="og:title" content="How it works — Yunaki">
+<meta property="og:description" content="A deterministic engine for facts, fees, and deadlines. Language models draft only. Attorneys approve everything before it moves.">
+<meta property="og:url" content="https://yunaki.tech/how-it-works.html">
+<meta property="og:image" content="https://yunaki.tech/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="frame">
+
+  <header class="topbar">
+    <a class="brand" href="index.html">YUNAKI <span>/ the agentic OS for law firms</span></a>
+    <nav class="topnav">
+      <a href="how-it-works.html" class="active">How it works</a>
+      <a href="case-files.html">Case files</a>
+      <a href="index.html#practices">Practice areas</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-solid" href="contact.html">Book a pilot ↗</a>
+    </nav>
+  </header>
+
+  <div class="page-head">
+    <div class="seclabel">§ how it works · architecture</div>
+    <h2>The method is fixed. The memory evolves.</h2>
+    <div class="prose">
+      <p>
+        Most legal AI puts a language model in charge of everything,
+        including what it's worst at. Yunaki is built the other way around.
+      </p>
+    </div>
+  </div>
+
+  <section class="sec-pad">
+    <div class="seclabel">§01 · the core rule</div>
+    <h2>Facts never come from a language model.</h2>
+    <div class="prose">
+      <p>
+        Poverty guidelines are a table. A means test is arithmetic. A form
+        edition is a version string. A rules engine gets these wrong 0% of
+        the time, by construction.
+      </p>
+    </div>
+
+    <figure class="fig">
+      <div class="fig-body">
+        <svg viewBox="0 0 1000 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the two-layer architecture: a deterministic layer computes all facts, a generative layer drafts prose only, and both feed a reviewed filing.">
+          <defs>
+            <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#152a43"/>
+            </marker>
+          </defs>
+
+          <!-- generative layer (top) -->
+          <rect x="40" y="40" width="560" height="100" fill="#fbfaf6" stroke="#152a43" stroke-width="2" stroke-dasharray="6 5"/>
+          <text x="64" y="76" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="700" fill="#152a43">Generative layer · drafts only</text>
+          <text x="64" y="102" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">cover letters · narratives · summaries</text>
+          <text x="64" y="122" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">always attorney-reviewed · never trusted with a fact</text>
+
+          <!-- boundary -->
+          <line x1="40" y1="180" x2="600" y2="180" stroke="#96772e" stroke-width="4"/>
+          <text x="64" y="205" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="700" fill="#96772e">THE BOUNDARY · the model reads facts. it never writes them.</text>
+
+          <!-- deterministic layer (bottom) -->
+          <rect x="40" y="224" width="560" height="100" fill="#fbfaf6" stroke="#152a43" stroke-width="2"/>
+          <text x="64" y="260" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="700" fill="#152a43">Deterministic layer · every fact</text>
+          <text x="64" y="286" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">fees · form editions · deadlines · guidelines · means tests</text>
+          <text x="64" y="306" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">cross-field math · date logic · completeness checks</text>
+
+          <!-- flows into output -->
+          <path d="M 600 274 L 700 274 L 700 182" fill="none" stroke="#152a43" stroke-width="2"/>
+          <path d="M 600 90 L 700 90 L 700 178" fill="none" stroke="#152a43" stroke-width="2"/>
+
+          <!-- output box -->
+          <rect x="736" y="132" width="224" height="100" fill="#fbfaf6" stroke="#96772e" stroke-width="2"/>
+          <text x="848" y="166" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="700" fill="#96772e">The case file</text>
+          <text x="848" y="190" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">facts: computed + checked</text>
+          <text x="848" y="208" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">prose: drafted + reviewed</text>
+          <text x="848" y="226" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">filed by your attorney</text>
+          <line x1="700" y1="182" x2="732" y2="182" stroke="#152a43" stroke-width="2" marker-end="url(#arr2)"/>
+        </svg>
+      </div>
+      <figcaption class="fig-cap">
+        <strong>Fig. 2 · Two layers, one hard boundary.</strong> The deterministic
+        layer computes every fact. The generative layer drafts prose around them.
+        Always reviewed.
+      </figcaption>
+    </figure>
+
+    <div class="duo">
+      <div>
+        <div class="card-label">WHY IT MATTERS · TRUST</div>
+        <p>76% of the immigration bar avoids AI over hallucination fears. Here, that failure is structurally impossible.</p>
+      </div>
+      <div>
+        <div class="card-label">WHY IT MATTERS · CHANGE</div>
+        <p>Rules change? We update a versioned playbook the same day. No retraining, no guessing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-pad">
+    <div class="seclabel">§02 · the system</div>
+    <h2>Six subsystems, one loop.</h2>
+
+    <div class="subsystems">
+      <div class="subsystem">
+        <div class="sub-no">01</div>
+        <div class="sub-title">
+          <h3>Client intake</h3>
+          <div class="tag">one secure link</div>
+        </div>
+        <div class="sub-desc">
+          <p>
+            Clients answer through a secure link. A husband and wife each see
+            only their own questions. Nothing reaches your file until they
+            press Submit — and every answer arrives as data you can check,
+            not a PDF you retype.
+          </p>
+        </div>
+      </div>
+      <div class="subsystem">
+        <div class="sub-no">02</div>
+        <div class="sub-title">
+          <h3>Document reading</h3>
+          <div class="tag">blank over guess</div>
+        </div>
+        <div class="sub-desc">
+          <p>
+            Passports, green cards, I-94s, and civil documents are read field
+            by field. Anything blank or unreadable stays blank — Yunaki never
+            fills in a plausible value. The wrong document in the slot is
+            refused, not misread.
+          </p>
+        </div>
+      </div>
+      <div class="subsystem">
+        <div class="sub-no">03</div>
+        <div class="sub-title">
+          <h3>The case check</h3>
+          <div class="tag">careful before accusing</div>
+        </div>
+        <div class="sub-desc">
+          <p>
+            Every answer is marked complete, incomplete, or can't tell. The
+            third option exists because wrongly telling you a client got it
+            wrong is worse than missing something. The file is compared
+            against the documents, and disagreements are flagged. We grade
+            the checker against a fixed test set every time we change it.
+          </p>
+        </div>
+      </div>
+      <div class="subsystem">
+        <div class="sub-no">04</div>
+        <div class="sub-title">
+          <h3>USCIS requirements</h3>
+          <div class="tag">verified and dated</div>
+        </div>
+        <div class="sub-desc">
+          <p>
+            30 visa types: which forms, which editions, which supporting
+            documents, where to file. Every fact is checked against official
+            sources and dated. Anything we haven't verified says so —
+            it is never inferred.
+          </p>
+        </div>
+      </div>
+      <div class="subsystem">
+        <div class="sub-no">05</div>
+        <div class="sub-title">
+          <h3>Firm memory</h3>
+          <div class="tag">your work, kept</div>
+        </div>
+        <div class="sub-desc">
+          <p>
+            Every answer, document, and outcome stays in your firm's file,
+            searchable. Ask @yunaki in Slack and it answers from your own
+            cases, with references. It stays yours.
+          </p>
+        </div>
+      </div>
+      <div class="subsystem">
+        <div class="sub-no">06</div>
+        <div class="sub-title">
+          <h3>Hard guardrails</h3>
+          <div class="tag">built in, not promised</div>
+        </div>
+        <div class="sub-desc">
+          <p>
+            Yunaki can read, check, and draft. It can never send, sign, or
+            file. Every outgoing email waits for a person to approve it, and
+            signature fields on forms can't be touched — the software refuses.
+            <a href="security.html">The full list →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-pad">
+    <div class="seclabel">§03 · receipts</div>
+    <h2>The errors are deterministic. So is the fix.</h2>
+
+    <div class="statrow" style="margin-top: 44px;">
+      <div class="stat">
+        <div class="num">65<span class="unit">%</span></div>
+        <div class="lbl">of SSDI initial denials are preventable</div>
+      </div>
+      <div class="stat">
+        <div class="num">85<span class="unit">%</span></div>
+        <div class="lbl">of healthcare claim denials are preventable</div>
+      </div>
+      <div class="stat">
+        <div class="num">67<span class="unit">%</span></div>
+        <div class="lbl">of OPT rejections from preventable mistakes</div>
+      </div>
+    </div>
+    <p class="stat-note">
+      sources: SSA FY2025 · KFF &amp; Medviz 2023 · USCIS 2024-25.
+      wrong fee, wrong edition, blank field, mismatched dates:
+      <strong>all checkable before filing.</strong>
+    </p>
+  </section>
+
+  <section class="cta-band">
+    <div class="seclabel">§ pilots</div>
+    <h2>See it on one of your own cases.</h2>
+    <p class="lead">
+      Bring one live case. We'll run it through Yunaki with you and show
+      you what it catches. No commitment.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn btn-solid" href="contact.html">Book a pilot ↗</a>
+      <a class="btn" href="case-files.html">Read the case files</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="fcol"><strong>YUNAKI</strong> · © 2026 · built by two founders</div>
+    <div class="fcol">your cases · your rules · your memory</div>
+    <div class="fcol">
+      <a href="index.html">home</a> ·
+      <a href="security.html">guardrails</a> ·
+      <a href="case-files.html">case files</a> ·
+      <a href="contact.html">book a pilot</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
