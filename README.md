@@ -1,6 +1,6 @@
 # Yunaki — marketing site
 
-Static marketing site for Yunaki (AI automation for law firms).
+Static marketing site for Yunaki (the agentic OS for law firms).
 Plain HTML and CSS, no build step. Deployed via GitHub Pages.
 
 ## Pages

@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guardrails — Yunaki</title>
-<meta name="description" content="The Yunaki guardrails: agents that can read, judge, and draft but never send, sign, or file. Human approval on every send, tenant and party isolation, no client words in logs.">
+<meta name="description" content="The Yunaki guardrails: it can read, check, and draft — it can never send, sign, or file. You approve every email. Your firm's data stays yours. No client details in logs.">
 <link rel="canonical" href="https://yunaki.tech/security.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yunaki">
 <meta property="og:title" content="Guardrails — Yunaki">
-<meta property="og:description" content="Agents that can read, judge, and draft — but never send, sign, or file. The walls are structural, not prompted.">
+<meta property="og:description" content="Yunaki can read, check, and draft — it can never send, sign, or file. The rules are built into the software, not promised.">
 <meta property="og:url" content="https://yunaki.tech/security.html">
 <meta property="og:image" content="https://yunaki.tech/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,7 +24,7 @@
 <div class="frame">
 
   <header class="topbar">
-    <a class="brand" href="index.html">YUNAKI <span>/ law-firm automation</span></a>
+    <a class="brand" href="index.html">YUNAKI <span>/ the agentic OS for law firms</span></a>
     <nav class="topnav">
       <a href="how-it-works.html">How it works</a>
       <a href="case-files.html">Case files</a>
@@ -36,12 +36,12 @@
 
   <div class="page-head">
     <div class="seclabel">§ guardrails · the walls</div>
-    <h2>An agent here can read, judge, and draft. It can never send, sign, or file.</h2>
+    <h2>Yunaki can read, check, and draft. It can never send, sign, or file.</h2>
     <div class="prose">
       <p>
-        You hold immigration clients' lives in your file system. So the rules
-        below are not policies we ask a model to follow — they are walls built
-        into the system, enforced in code, and tested on every change.
+        Your files hold your clients' lives. So the rules below are not
+        policies we ask an AI to follow — they are built into the software
+        itself, and tested every time it changes.
       </p>
     </div>
   </div>
@@ -54,15 +54,14 @@
       <div class="subsystem">
         <div class="sub-no">01</div>
         <div class="sub-title">
-          <h3>Nothing sends without a human</h3>
-          <div class="tag">the send gate</div>
+          <h3>Nothing sends without you</h3>
+          <div class="tag">you press send</div>
         </div>
         <div class="sub-desc">
           <p>
-            Every message an agent writes is born as a pending draft. An
-            attorney approves it; dispatch is a separate, deliberate press.
-            The drafting code physically cannot send — the sending code
-            path only accepts human-approved drafts.
+            Every email Yunaki writes waits as a draft. You read it, you
+            press send. The part of the system that writes drafts cannot
+            send them — that's how it's built, not a setting.
           </p>
         </div>
       </div>
@@ -70,91 +69,85 @@
         <div class="sub-no">02</div>
         <div class="sub-title">
           <h3>Nothing is signed or filed</h3>
-          <div class="tag">unfillable by construction</div>
+          <div class="tag">your attorney's act</div>
         </div>
         <div class="sub-desc">
           <p>
-            Signature, consent, and barcode fields are rejected at the level
-            where form fields are defined — they cannot be mapped, filled, or
-            touched. There is no e-filing integration and no submit
-            automation anywhere in the product. Filing is your attorney's
-            act, always.
+            Yunaki cannot touch a signature field — the software refuses to
+            fill one, period. There is no e-filing and no auto-submit
+            anywhere in the product. Filing is your attorney's act, always.
           </p>
         </div>
       </div>
       <div class="subsystem">
         <div class="sub-no">03</div>
         <div class="sub-title">
-          <h3>No plausible guesses</h3>
-          <div class="tag">null over guess</div>
+          <h3>No made-up answers</h3>
+          <div class="tag">blank over guess</div>
         </div>
         <div class="sub-desc">
           <p>
-            A value that is absent, blank, or illegible is recorded as null.
-            The case check's third verdict — undeterminable — exists so the
-            system says "I can't tell" instead of accusing your client or
-            passing an incomplete answer as complete. Failure resolves to
-            uncertainty, never to a pass.
+            If a date is unreadable, it stays blank. If an answer can't be
+            judged, Yunaki says "can't tell" instead of guessing. When
+            something goes wrong, it fails toward caution — never toward
+            a pass.
           </p>
         </div>
       </div>
       <div class="subsystem">
         <div class="sub-no">04</div>
         <div class="sub-title">
-          <h3>Firm isolation, twice</h3>
-          <div class="tag">two walls per query</div>
+          <h3>Your firm's data is yours alone</h3>
+          <div class="tag">walled off, twice</div>
         </div>
         <div class="sub-desc">
           <p>
-            Every database read is scoped to your firm in the application
-            code and again by row-level security in the database itself.
-            A request for another firm's record returns the same answer as
-            a record that doesn't exist.
+            Every lookup is limited to your firm — once in the software and
+            again in the database itself. Another firm asking for your
+            record gets the same answer as asking for one that doesn't exist.
           </p>
         </div>
       </div>
       <div class="subsystem">
         <div class="sub-no">05</div>
         <div class="sub-title">
-          <h3>The party wall</h3>
+          <h3>Clients don't see each other's answers</h3>
           <div class="tag">one case, two halves</div>
         </div>
         <div class="sub-desc">
           <p>
             A petitioner and a beneficiary can share a case without sharing
-            answers. Portal links are scoped per party, and a check triggered
-            by one party's submission reads only that party's half — it can
-            never report the other side's unanswered questions.
+            answers. Each gets their own link, their own questions, their
+            own half of the file.
           </p>
         </div>
       </div>
       <div class="subsystem">
         <div class="sub-no">06</div>
         <div class="sub-title">
-          <h3>No client words in logs</h3>
-          <div class="tag">ids, counts, hashes</div>
+          <h3>No client details in our logs</h3>
+          <div class="tag">numbers, not names</div>
         </div>
         <div class="sub-desc">
           <p>
-            Logs and traces carry identifiers, counts, and content hashes —
-            never a question, an answer, an address, or a filename. Documents
-            are referenced by cryptographic hash. Even the agent's own
-            summaries are audited so they cannot quote a client back.
+            Our system logs never contain a name, an answer, an address, or
+            a document. When we debug a problem, we see case numbers and
+            counts — not your client.
           </p>
         </div>
       </div>
       <div class="subsystem">
         <div class="sub-no">07</div>
         <div class="sub-title">
-          <h3>Pinned capabilities</h3>
-          <div class="tag">allow-lists, not vibes</div>
+          <h3>It can only do what's on its list</h3>
+          <div class="tag">a short, fixed list</div>
         </div>
         <div class="sub-desc">
           <p>
-            Each agent has an explicit, build-time-checked list of tools —
-            the complete answer to "what can this agent do." Anything else is
-            refused at the execution layer. Budgets cap every run; a run that
-            hits its cap says so instead of pretending it finished.
+            Each assistant has a fixed, short list of things it is allowed
+            to do. Anything else is refused automatically. Every run has a
+            hard limit, and a run that hits it says so instead of pretending
+            it finished.
           </p>
         </div>
       </div>
@@ -162,13 +155,13 @@
         <div class="sub-no">08</div>
         <div class="sub-title">
           <h3>Everything on the record</h3>
-          <div class="tag">audit by default</div>
+          <div class="tag">a full paper trail</div>
         </div>
         <div class="sub-desc">
           <p>
-            Every agent run files a durable record — what it read, what it
-            did, in what order, and how it ended — on success, on error, and
-            on cap alike. The case check panel shows your firm the same trace.
+            Every run is recorded: what it read, what it did, in what order,
+            and how it ended. You can see the same trail in the app,
+            case by case.
           </p>
         </div>
       </div>
