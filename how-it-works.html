@@ -4,7 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How it works — Yunaki</title>
-<meta name="description" content="The Yunaki architecture: a deterministic engine for facts, fees, and deadlines. Language models draft only. Firm memory compounds with every outcome.">
+<meta name="description" content="The Yunaki architecture: a deterministic engine for facts, fees, and deadlines. Language models draft only. Attorneys approve everything before it moves.">
+<link rel="canonical" href="https://yunaki.tech/how-it-works.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yunaki">
+<meta property="og:title" content="How it works — Yunaki">
+<meta property="og:description" content="A deterministic engine for facts, fees, and deadlines. Language models draft only. Attorneys approve everything before it moves.">
+<meta property="og:url" content="https://yunaki.tech/how-it-works.html">
+<meta property="og:image" content="https://yunaki.tech/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -77,9 +87,10 @@
 
           <!-- output box -->
           <rect x="736" y="132" width="224" height="100" fill="#fbfaf6" stroke="#96772e" stroke-width="2"/>
-          <text x="848" y="172" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="700" fill="#96772e">The filing</text>
-          <text x="848" y="196" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">facts: computed + checked</text>
-          <text x="848" y="214" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">prose: drafted + reviewed</text>
+          <text x="848" y="166" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="700" fill="#96772e">The case file</text>
+          <text x="848" y="190" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">facts: computed + checked</text>
+          <text x="848" y="208" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">prose: drafted + reviewed</text>
+          <text x="848" y="226" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">filed by your attorney</text>
           <line x1="700" y1="182" x2="732" y2="182" stroke="#152a43" stroke-width="2" marker-end="url(#arr2)"/>
         </svg>
       </div>
@@ -104,75 +115,98 @@
 
   <section class="sec-pad">
     <div class="seclabel">§02 · the system</div>
-    <h2>Five subsystems, one loop.</h2>
+    <h2>Six subsystems, one loop.</h2>
 
     <div class="subsystems">
       <div class="subsystem">
         <div class="sub-no">01</div>
         <div class="sub-title">
-          <h3>Firm memory</h3>
-          <div class="tag">work product, encoded</div>
+          <h3>Client portal intake</h3>
+          <div class="tag">party-scoped, by construction</div>
         </div>
         <div class="sub-desc">
           <p>
-            Every filing and outcome becomes structured, queryable memory.
-            The next similar case starts from your best prior work.
-            It can't be ported to a competitor.
+            Clients answer through magic links scoped to their side of the
+            case — the petitioner never sees the beneficiary's half. Drafts
+            stay private until Submit, and every answer lands as a typed,
+            provenance-stamped record, not a PDF in an inbox.
           </p>
         </div>
       </div>
       <div class="subsystem">
         <div class="sub-no">02</div>
         <div class="sub-title">
-          <h3>Consistency engine</h3>
-          <div class="tag">one master record</div>
+          <h3>Deterministic extraction</h3>
+          <div class="tag">null over guess</div>
         </div>
         <div class="sub-desc">
           <p>
-            One master record per client. Every field on every form is
-            cross-checked against it before filing. "123 Main St" vs.
-            "123 Main Street" gets flagged, not filed.
+            Passports, green cards, EADs, I-94s, and civil documents are read
+            field by field. Absent, blank, or illegible is recorded as null —
+            never completed with a plausible value. A wrong document in the
+            slot is refused, not misread.
           </p>
         </div>
       </div>
       <div class="subsystem">
         <div class="sub-no">03</div>
         <div class="sub-title">
-          <h3>Living playbooks</h3>
-          <div class="tag">one per form, versioned</div>
+          <h3>The case check</h3>
+          <div class="tag">measured, biased against accusing</div>
         </div>
         <div class="sub-desc">
           <p>
-            Each form gets a versioned playbook: current edition, fees,
-            evidence checklist, known triggers. Stale editions are impossible.
-            The edition is data, not model weights.
+            Every answer is judged complete, incomplete, or undeterminable —
+            the third verdict exists because a false accusation is worse than
+            a missed one. A deterministic crosscheck compares the file to the
+            documents and flags field names, never values. The judge is
+            replayed against a labeled golden set on every change, including
+            adversarial injection attempts.
           </p>
         </div>
       </div>
       <div class="subsystem">
         <div class="sub-no">04</div>
         <div class="sub-title">
-          <h3>Pre-flight scoring</h3>
-          <div class="tag">risk, before filing</div>
+          <h3>USCIS knowledge as data</h3>
+          <div class="tag">verified, cited, versioned</div>
         </div>
         <div class="sub-desc">
           <p>
-            Every package is scored against known rejection patterns before
-            filing. A risk score plus a specific fix list, while fixing is
-            still cheap.
+            30 visa classifications: required forms, editions, supporting
+            documents, and filing channels — each verified against official
+            sources with a citation and a date. Anything unverified says so.
+            The edition is data, not model weights.
           </p>
         </div>
       </div>
       <div class="subsystem">
         <div class="sub-no">05</div>
         <div class="sub-title">
-          <h3>Hard guardrails</h3>
-          <div class="tag">compliance by construction</div>
+          <h3>Firm memory</h3>
+          <div class="tag">work product, encoded</div>
         </div>
         <div class="sub-desc">
           <p>
-            UPL boundaries are hard-coded, not prompted. The system fills,
-            validates, and flags. It never advises.
+            Every intake answer, document, and outcome becomes a structured,
+            queryable case record. Ask @yunaki in Slack and it answers from
+            your firm's own file — with citations to it. It stays yours.
+          </p>
+        </div>
+      </div>
+      <div class="subsystem">
+        <div class="sub-no">06</div>
+        <div class="sub-title">
+          <h3>Hard guardrails</h3>
+          <div class="tag">structural, not prompted</div>
+        </div>
+        <div class="sub-desc">
+          <p>
+            An agent here can read, judge, and draft — it can never send, sign,
+            or file. Every outbound message waits as a draft for attorney
+            approval. Signature fields are structurally unfillable. UPL
+            boundaries are hard-coded, not prompted.
+            <a href="security.html">The full list →</a>
           </p>
         </div>
       </div>
@@ -206,10 +240,10 @@
 
   <section class="cta-band">
     <div class="seclabel">§ pilots</div>
-    <h2>See your own filings scored.</h2>
+    <h2>See it on one of your own cases.</h2>
     <p class="lead">
-      Send one anonymized package. We'll show you what pre-flight
-      would have caught. No commitment.
+      Bring one live case. We'll run intake, extraction, and the case
+      check on it with you. No commitment.
     </p>
     <div class="hero-ctas">
       <a class="btn btn-solid" href="contact.html">Book a pilot ↗</a>
@@ -222,6 +256,7 @@
     <div class="fcol">your cases · your rules · your memory</div>
     <div class="fcol">
       <a href="index.html">home</a> ·
+      <a href="security.html">guardrails</a> ·
       <a href="case-files.html">case files</a> ·
       <a href="contact.html">book a pilot</a>
     </div>
