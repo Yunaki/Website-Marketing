@@ -3,12 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yunaki — AI automation for law firms</title>
-<meta name="description" content="Yunaki automates intake, forms, and filings for law firms. Deterministic on facts, fees, and deadlines. Every outcome becomes firm memory.">
+<title>Yunaki — AI case OS for immigration law firms</title>
+<meta name="description" content="Yunaki is the agentic case OS for immigration law firms: client intake, document extraction, AI case checks, and USCIS form preparation. Deterministic on facts. Attorneys approve everything — Yunaki never submits, signs, or files.">
+<link rel="canonical" href="https://yunaki.tech/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yunaki">
+<meta property="og:title" content="Yunaki — AI case OS for immigration law firms">
+<meta property="og:description" content="Automation that never guesses your cases. Intake, extraction, and AI case checks for immigration firms. Attorneys approve everything — Yunaki never submits, signs, or files.">
+<meta property="og:url" content="https://yunaki.tech/">
+<meta property="og:image" content="https://yunaki.tech/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yunaki — AI case OS for immigration law firms">
+<meta name="twitter:description" content="Automation that never guesses your cases. Attorneys approve everything — Yunaki never submits, signs, or files.">
+<meta name="twitter:image" content="https://yunaki.tech/assets/og.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Yunaki",
+  "url": "https://yunaki.tech/",
+  "applicationCategory": "BusinessApplication",
+  "description": "Agentic case OS for immigration law firms: client intake, document extraction, AI case checks, and USCIS form preparation. Attorneys approve everything; Yunaki never submits, signs, or files.",
+  "operatingSystem": "Web",
+  "publisher": { "@type": "Organization", "name": "Yunaki", "url": "https://yunaki.tech/" }
+}
+</script>
 </head>
 <body>
 <div class="frame">
@@ -26,15 +51,17 @@
 
   <section class="hero">
     <div class="kicker">
-      <span>DWG.001 · LAW-FIRM AUTOMATION · DETERMINISTIC</span>
+      <span>DWG.001 · IMMIGRATION CASE OS · DETERMINISTIC</span>
       <span>|</span>
       <span class="live"><span class="dot"></span> PILOTS OPEN</span>
     </div>
     <h1>Automation that <span class="hl">never</span> <span class="hl">guesses</span> your cases.</h1>
     <p class="lead">
-      Yunaki automates intake, forms, and filings for law firms.
+      Yunaki runs client intake, reads the documents, and checks every answer
+      for immigration law firms.
       <strong>Facts, fees, and deadlines come from a deterministic engine.</strong>
-      Language models draft. They never decide.
+      Language models draft. They never decide. And Yunaki never submits,
+      signs, or files anything — your attorneys do.
     </p>
     <div class="hero-ctas">
       <a class="btn btn-solid" href="case-files.html">See the case files →</a>
@@ -101,15 +128,15 @@
 
   <section class="sec-pad" id="how">
     <div class="seclabel">§02 · how it works</div>
-    <h2>Upload the documents. The engine does the rest.</h2>
+    <h2>The client uploads. The engine reads, checks, and asks.</h2>
     <div class="prose">
-      <p>Watch it run: a passport goes in, validated forms come out.</p>
+      <p>Watch it run: a passport goes in, a checked case file comes out.</p>
     </div>
 
     <figure class="fig">
-      <div class="pipeline" role="img" aria-label="Animation: a firm uploads a passport, the deterministic engine extracts and verifies the data, and the immigration forms are populated and validated.">
+      <div class="pipeline" role="img" aria-label="Animation: a client uploads a passport through the portal, the deterministic engine extracts and cross-checks the data, and the case file comes back checked with follow-up questions drafted.">
         <div class="pl-stage" aria-hidden="true">
-          <div class="pl-cardlabel">Firm uploads</div>
+          <div class="pl-cardlabel">Client uploads</div>
           <div class="pl-card">
             <div class="pl-doctitle">Passport</div>
             <div class="pl-line w80"></div>
@@ -123,36 +150,41 @@
           <div class="pl-cardlabel">Yunaki processes</div>
           <div class="pl-card">
             <div class="pl-check">extract every field</div>
-            <div class="pl-check c2">verify fees + form editions</div>
-            <div class="pl-check c3">cross-check names + dates</div>
+            <div class="pl-check c2">cross-check the file vs. the documents</div>
+            <div class="pl-check c3">judge every answer's completeness</div>
           </div>
         </div>
         <div class="pl-flow pl-flow2" aria-hidden="true"><span class="pl-dot"></span></div>
         <div class="pl-stage" aria-hidden="true">
-          <div class="pl-cardlabel">Forms populated</div>
+          <div class="pl-cardlabel">Case checked</div>
           <div class="pl-card">
-            <div class="pl-field"><span>I-130</span><i></i></div>
-            <div class="pl-field f2"><span>I-485</span><i></i></div>
-            <div class="pl-field f3"><span>I-864</span><i></i></div>
-            <div class="pl-stamp">VALIDATED</div>
+            <div class="pl-field"><span>Conflicts flagged</span><i></i></div>
+            <div class="pl-field f2"><span>Follow-ups drafted</span><i></i></div>
+            <div class="pl-field f3"><span>Docs listed</span><i></i></div>
+            <div class="pl-stamp">CHECKED</div>
           </div>
         </div>
       </div>
       <figcaption class="fig-cap">
-        <strong>Fig. 1 · The Yunaki loop.</strong> Deterministic extraction, one master
-        record, every field cross-checked before filing. Each outcome feeds back
-        into firm memory.
+        <strong>Fig. 1 · The Yunaki loop.</strong> Deterministic extraction, one
+        typed case record, every answer checked against it. What's missing
+        becomes a follow-up question your attorney approves before it sends.
       </figcaption>
     </figure>
 
     <div class="duo">
       <div>
-        <div class="card-label">ON EVERY CASE</div>
-        <p>Memory recalls what worked. Forms are populated and cross-checked before filing.</p>
+        <div class="card-label">ON EVERY ANSWER</div>
+        <p>The case check judges each client answer complete, incomplete, or
+        undeterminable — it is built to say "I can't tell" before it will
+        ever accuse. Conflicts between the file and the documents are flagged
+        by field name, never by quoting your client back.</p>
       </div>
       <div>
-        <div class="card-label">ON EVERY OUTCOME</div>
-        <p>Approvals reinforce patterns. RFEs update checklists. Denials flag failure modes.</p>
+        <div class="card-label">ON EVERY SEND</div>
+        <p>Nothing leaves the building without a human. Agents draft the
+        follow-up; an attorney approves it; dispatch is a separate press.
+        That boundary is structural, not a prompt instruction.</p>
       </div>
     </div>
 
@@ -162,8 +194,78 @@
     </div>
   </section>
 
+  <section class="sec-pad" id="today">
+    <div class="seclabel">§03 · in the product today</div>
+    <h2>What pilot firms are working with now.</h2>
+    <div class="prose">
+      <p>Not a roadmap. These run on live immigration cases during the pilot.</p>
+    </div>
+
+    <div class="practices">
+      <div class="practice">
+        <div class="practice-head"><h3>Client portal</h3><span class="chip chip-live">Live</span></div>
+        <p><strong>Intake without the email ping-pong.</strong></p>
+        <ul class="list">
+          <li>Magic-link access, scoped per party — the petitioner never sees the beneficiary's half</li>
+          <li>Typed answers and uploads held privately until the client presses Submit</li>
+          <li>Fix rounds: request changes, unlock a section, the client resubmits</li>
+        </ul>
+      </div>
+      <div class="practice">
+        <div class="practice-head"><h3>Document extraction</h3><span class="chip chip-live">Live</span></div>
+        <p><strong>Reads the documents. Refuses to guess.</strong></p>
+        <ul class="list">
+          <li>Passports, green cards, EADs, I-94s, birth and marriage certificates, and more</li>
+          <li>Absent, blank, or illegible → recorded as null, never completed with a plausible value</li>
+          <li>Wrong document in the slot is refused, not misread</li>
+        </ul>
+      </div>
+      <div class="practice">
+        <div class="practice-head"><h3>The case check</h3><span class="chip chip-live">Live</span></div>
+        <p><strong>One press answers: is this case complete?</strong></p>
+        <ul class="list">
+          <li>Every answer judged complete, incomplete, or undeterminable — never guessed</li>
+          <li>Deterministic crosscheck of the file against the extracted documents</li>
+          <li>Follow-up questions drafted, with a step-by-step trace of what the check did</li>
+        </ul>
+      </div>
+      <div class="practice">
+        <div class="practice-head"><h3>USCIS knowledge as data</h3><span class="chip chip-live">Live</span></div>
+        <p><strong>30 visa classifications, verified — not memorized.</strong></p>
+        <ul class="list">
+          <li>Required forms, editions, and supporting documents per classification</li>
+          <li>Filing channels verified against official sources, with citations and dates</li>
+          <li>Unverified is labeled unverified. Nothing is inferred</li>
+        </ul>
+      </div>
+      <div class="practice">
+        <div class="practice-head"><h3>Slack assistant</h3><span class="chip chip-live">Live</span></div>
+        <p><strong>@yunaki, in the channel your firm already lives in.</strong></p>
+        <ul class="list">
+          <li>Case status, timelines, documents, and history — answered with citations to the file</li>
+          <li>Runs the case check on request and reports what it found</li>
+          <li>Drafts client emails; approval cards land in the thread</li>
+        </ul>
+      </div>
+      <div class="practice">
+        <div class="practice-head"><h3>Human-approved sending</h3><span class="chip chip-live">Live</span></div>
+        <p><strong>Agents draft. Attorneys send. Always.</strong></p>
+        <ul class="list">
+          <li>Every outbound message is a pending draft until a person approves it</li>
+          <li>Recipients only from addresses your firm entered — a client's email can't redirect one</li>
+          <li>Every agent run is recorded: what it read, what it did, in order</li>
+        </ul>
+      </div>
+      <div class="practice-foot">
+        the boundary, in one sentence: <strong>an agent here can read, judge, and
+        draft — it can never send, sign, or file.</strong>
+        <a href="security.html">read the guardrails →</a>
+      </div>
+    </div>
+  </section>
+
   <section class="sec-pad" id="practices">
-    <div class="seclabel">§03 · practice areas</div>
+    <div class="seclabel">§04 · practice areas</div>
     <h2>One engine. Every paperwork-heavy practice.</h2>
     <div class="prose">
       <p>Same failure pattern everywhere: high-volume forms, deterministic rules, brutal penalties for small errors.</p>
@@ -174,9 +276,9 @@
         <div class="practice-head"><h3>Immigration</h3><span class="chip chip-live">Pilots open</span></div>
         <p><strong>I-130 denials jumped 28.4% → 41.6%</strong> in FY 2025.</p>
         <ul class="list">
-          <li>Full concurrent packages: I-130 · I-485 · I-864 · I-765 · I-131</li>
-          <li>Cross-form consistency against one master record</li>
-          <li>Pre-flight RFE risk score + RFE response memory</li>
+          <li>Portal intake, extraction, and the case check on live cases today</li>
+          <li>30 classifications covered: family, employment, humanitarian, citizenship</li>
+          <li>Form preparation from the checked case record — attorney reviews every field</li>
         </ul>
       </div>
       <div class="practice">
@@ -232,7 +334,7 @@
   </section>
 
   <section class="sec-pad" id="proof">
-    <div class="seclabel">§04 · proof</div>
+    <div class="seclabel">§05 · proof</div>
     <h2>Case files, not testimonials.</h2>
     <div class="prose">
       <p>No invented clients. Every number is public and sourced.</p>
@@ -265,11 +367,12 @@
   </section>
 
   <section class="cta-band" id="pilot">
-    <div class="seclabel">§05 · pilots</div>
+    <div class="seclabel">§06 · pilots</div>
     <h2>We're onboarding five pilot firms.</h2>
     <p class="lead">
-      Immigration first. Full package validation, free during the pilot.
-      The memory the system builds stays yours.
+      Immigration first. Portal intake, extraction, and the case check on
+      your live cases, free during the pilot. The record the system builds
+      stays yours.
     </p>
     <div class="hero-ctas">
       <a class="btn btn-solid" href="contact.html">Book a pilot ↗</a>
@@ -282,6 +385,7 @@
     <div class="fcol">your cases · your rules · your memory</div>
     <div class="fcol">
       <a href="how-it-works.html">how it works</a> ·
+      <a href="security.html">guardrails</a> ·
       <a href="case-files.html">case files</a> ·
       <a href="contact.html">book a pilot</a>
     </div>

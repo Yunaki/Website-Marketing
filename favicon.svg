@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- The Yunaki origami crane. Same geometry as the app's icon.svg
+       (frontend/src/app/icon.svg); change one, change both. -->
+  <g transform="translate(32 32) rotate(-16) scale(0.6) translate(-48 -27.5)">
+    <g fill="none" stroke="#27354B" stroke-width="4.6"
+       stroke-linejoin="miter" stroke-miterlimit="12">
+      <polygon points="45,39 60,34 60,48" fill="#B6D552" />
+      <path d="M4 1 L60 34" />
+      <path d="M15 39 L73 13" />
+      <path d="M4 1 L15 39" />
+      <polygon points="0,54 45,39 60,48 29,54" />
+      <polygon points="60,34 73,13 71,23 60,48" />
+      <polygon points="73,13 96,22 71,23" />
+    </g>
+  </g>
+</svg>

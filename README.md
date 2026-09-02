@@ -6,9 +6,16 @@ Plain HTML and CSS, no build step. Deployed via GitHub Pages.
 ## Pages
 - `index.html` — home
 - `how-it-works.html` — architecture
+- `security.html` — guardrails
 - `case-files.html` — data-backed case studies
 - `contact.html` — book-a-pilot form (posts to FormSubmit)
+- `404.html` — not-found page (GitHub Pages picks it up by name)
 - `style.css` — design system
+
+SEO plumbing: `robots.txt`, `sitemap.xml`, `favicon.svg`, and OG images
+under `assets/`. The OG card and touch icon are rendered from small HTML
+templates; regenerate with any 1200×630 / 180×180 screenshot tool if the
+brand changes.
 
 ## Local preview
 ```
