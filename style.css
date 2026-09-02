@@ -1046,3 +1046,47 @@ footer a:hover { color: var(--accent); }
   .pl-dot { display: none; }
   .form-grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- the OS map (interactive system diagram) ---------- */
+
+.osmap-scroll { overflow-x: auto; margin-top: 44px; }
+.osmap { display: block; min-width: 880px; width: 100%; }
+.osedge {
+  fill: none;
+  stroke: #152a43;
+  stroke-width: 1.5;
+  opacity: 0.4;
+  transition: opacity 0.25s, stroke 0.25s, stroke-width 0.25s;
+}
+.osedge.lit { stroke: #96772e; stroke-width: 2.5; opacity: 1; }
+.osnode { cursor: pointer; outline: none; }
+.osnode rect {
+  fill: #fbfaf6;
+  stroke: #152a43;
+  stroke-width: 1.5;
+  transition: stroke 0.25s, stroke-width 0.25s;
+}
+.osnode.gold rect { stroke: #96772e; }
+.osnode.lit rect, .osnode:focus-visible rect { stroke: #96772e; stroke-width: 2.5; }
+.osnode-title { font-family: var(--serif); font-size: 19px; font-weight: 700; fill: #152a43; }
+.osnode-sub { font-family: var(--mono); font-size: 11px; fill: #5c6675; letter-spacing: 0.04em; }
+.oscore-title { font-family: var(--serif); font-size: 24px; font-weight: 700; fill: #152a43; letter-spacing: 0.05em; }
+.oshdr { font-family: var(--mono); font-size: 10.5px; fill: #5c6675; letter-spacing: 0.14em; }
+.osgate { stroke: #96772e; stroke-width: 2; stroke-dasharray: 7 6; fill: none; }
+.osgate-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: #96772e; letter-spacing: 0.12em; }
+.osstamp { font-family: var(--mono); font-size: 10px; font-weight: 700; fill: #96772e; letter-spacing: 0.14em; }
+.osdot { fill: #96772e; }
+.osmap-cap {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-top: 1px solid rgba(21, 42, 67, 0.16);
+  padding-top: 14px;
+  min-height: 44px;
+}
+.osmap-cap strong { color: var(--ink); }
+@media (prefers-reduced-motion: reduce) {
+  .osdot { display: none; }
+}
