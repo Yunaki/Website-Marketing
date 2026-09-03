@@ -9,8 +9,10 @@
 // Reduced motion gets one still frame; offscreen tiles pause.
 import { useEffect, useRef } from "react";
 
-type Person = { name: string; role: string; quote: string; img: string; eyeY: number };
+type Person = { name: string; role: string; quote: string; img: string; eyeY: number; video?: string };
 
+// When the founders send short clips, add video: "/portraits/<name>.mp4"
+// and the tile plays true dithered footage instead of the animated still.
 const PEOPLE: Person[] = [
   { name: "Allison Yew", role: "Senior attorney", quote: "[ Allison's words go here ]", img: "/portraits/stage-a.png", eyeY: 0.46 },
   { name: "Isaiah", role: "Paralegal", quote: "[ Isaiah's words go here ]", img: "/portraits/stage-b.png", eyeY: 0.44 },
@@ -21,7 +23,7 @@ const W = 240, H = 300;        // rendered size
 const CELL = 4.5;              // grid pitch at render size (9px at stage scale)
 const INK = "#27354b";
 
-export function DitherPortrait({ src, eyeY }: { src: string; eyeY: number }) {
+export function DitherPortrait({ src, eyeY, video }: { src: string; eyeY: number; video?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     const canvas = ref.current;
@@ -36,6 +38,19 @@ export function DitherPortrait({ src, eyeY }: { src: string; eyeY: number }) {
     let bg = 245;
     const img = new Image();
     img.src = src;
+
+    // Optional true-footage path: a hidden looping video re-sampled per frame.
+    let vid: HTMLVideoElement | null = null;
+    let voff: CanvasRenderingContext2D | null = null;
+    if (video) {
+      vid = document.createElement("video");
+      vid.src = video;
+      vid.muted = true; vid.loop = true; vid.playsInline = true;
+      vid.play().catch(() => { vid = null; });
+      const c = document.createElement("canvas");
+      c.width = SW; c.height = SH;
+      voff = c.getContext("2d", { willReadFrequently: true });
+    }
 
     const sample = (x: number, y: number) => {
       // bilinear sample of the stage luminance, x/y in stage pixels
@@ -52,10 +67,20 @@ export function DitherPortrait({ src, eyeY }: { src: string; eyeY: number }) {
     let blinkAt = 2600 + Math.random() * 2400;
 
     const draw = (t: number) => {
-      // the "camera": breathing zoom and a slow drift
-      const zoom = reduced ? 1 : 1 + 0.016 * Math.sin(t / 4200);
-      const dx = reduced ? 0 : 5 * Math.sin(t / 5100);
-      const dy = reduced ? 0 : 3.5 * Math.cos(t / 6300);
+      // Real footage: refresh the luminance buffer from the current frame.
+      if (vid && voff && vid.readyState >= 2) {
+        voff.drawImage(vid, 0, 0, SW, SH);
+        const d = voff.getImageData(0, 0, SW, SH).data;
+        if (!lum) lum = new Uint8ClampedArray(SW * SH);
+        for (let i = 0; i < SW * SH; i++) lum[i] = d[i * 4];
+      }
+      // Articulated motion for the still: the head tilts and nods around a
+      // neck pivot while the shoulders hold, plus breathing.
+      const theta = reduced || vid ? 0 : 0.022 * Math.sin(t / 2700) + 0.009 * Math.sin(t / 950 + 1.7);
+      const nod = reduced || vid ? 0 : 4.5 * Math.sin(t / 3600 + 0.6);
+      const breathe = reduced || vid ? 0 : 2.2 * Math.sin(t / 1900);
+      const cosT = Math.cos(theta), sinT = Math.sin(theta);
+      const PXx = SW / 2, PXy = SH * 0.78;
       // the blink: a brief dimming band over the eyes
       let blink = 0;
       if (!reduced) {
@@ -69,8 +94,14 @@ export function DitherPortrait({ src, eyeY }: { src: string; eyeY: number }) {
       ctx.lineWidth = 0.8;
       for (let gy = CELL / 2; gy < H; gy += CELL) {
         for (let gx = CELL / 2; gx < W; gx += CELL) {
-          const sx = (gx - W / 2) * (2 / zoom) + SW / 2 + dx;
-          const sy = (gy - H / 2) * (2 / zoom) + SH / 2 + dy;
+          let sx = gx * 2, sy = gy * 2;
+          if (theta !== 0 || nod !== 0 || breathe !== 0) {
+            // weight: 1 at the crown, 0 below the neck pivot
+            const wgt = Math.max(0, Math.min(1, (PXy - sy) / (SH * 0.5)));
+            const rx = sx - PXx, ry = sy - PXy;
+            sx = PXx + (rx * cosT - ry * sinT) * (wgt) + rx * (1 - wgt);
+            sy = PXy + (rx * sinT + ry * cosT) * (wgt) + ry * (1 - wgt) + nod * wgt + breathe * (1 - wgt) * 0.4;
+          }
           const v = sample(sx, sy) / 255;
           let dens = 1 - v;
           if (Math.abs(v * 255 - bg) < 26) dens *= 0.25;
@@ -82,7 +113,10 @@ export function DitherPortrait({ src, eyeY }: { src: string; eyeY: number }) {
           if (blink > 0 && Math.abs(gy / H - eyeY) < 0.035) dens *= 1 - 0.6 * blink;
           if (dens < 0.12) continue;
           const ph = (gx * 7 + gy * 13) * 0.11;
-          const s = dens * 2.2 * (reduced ? 1 : 1 + 0.11 * Math.sin(t / 480 + ph));
+          // film-grain flicker: a per-dot pseudo-random pulse per ~90ms frame
+          const fr = (t / 90) | 0;
+          const gr = (((gx * 131 + gy * 379 + fr * 997) | 0) % 17) / 17 - 0.5;
+          const s = dens * 2.2 * (reduced ? 1 : 1 + 0.09 * Math.sin(t / 480 + ph) + 0.09 * gr);
           if (s <= 0.22) continue;
           if (dens > 0.22 && dens < 0.42 && ((gx * 73 + gy * 19) | 0) % 7 === 0) {
             const p = Math.max(0.8, s * 1.25);
@@ -128,10 +162,13 @@ export function DitherPortrait({ src, eyeY }: { src: string; eyeY: number }) {
     };
     img.onerror = () => { /* leave the tile empty rather than throw */ };
 
-    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { rootMargin: "120px" });
+    const io = new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+      if (vid) { if (visible) vid.play().catch(() => {}); else vid.pause(); }
+    }, { rootMargin: "120px" });
     io.observe(canvas);
-    return () => { alive = false; cancelAnimationFrame(raf); io.disconnect(); };
-  }, [src, eyeY]);
+    return () => { alive = false; cancelAnimationFrame(raf); io.disconnect(); if (vid) { vid.pause(); vid.src = ""; } };
+  }, [src, eyeY, video]);
   return <canvas ref={ref} className="quote-canvas" style={{ width: W, height: H }} aria-hidden="true" />;
 }
 
@@ -140,7 +177,7 @@ export function Testimonials() {
     <div className="quotes" role="list">
       {PEOPLE.map((p) => (
         <article className="quote" role="listitem" key={p.name}>
-          <div className="quote-tile"><DitherPortrait src={p.img} eyeY={p.eyeY} /></div>
+          <div className="quote-tile"><DitherPortrait src={p.img} eyeY={p.eyeY} video={p.video} /></div>
           <div className="quote-body">
             <p className="quote-text">&ldquo;{p.quote}&rdquo;</p>
             <div className="quote-attr">{p.name.toUpperCase()}, {p.role.toUpperCase()}</div>
