@@ -690,6 +690,7 @@ footer a:hover { color: var(--ink); }
   .quote { grid-template-columns: 1fr; padding: 20px; }
 }
 .quote-tile {
+  position: relative;
   border-radius: 28px;
   background: linear-gradient(160deg, #f4c7c0 0%, #f8e0d6 45%, var(--canvas) 100%);
   display: flex;
@@ -698,7 +699,17 @@ footer a:hover { color: var(--ink); }
   overflow: hidden;
   min-height: 300px;
 }
-.quote-canvas { display: block; }
+.quote-tile img { display: block; width: 240px; height: 300px; }
+.quote-tile::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(115deg, transparent 42%, rgba(255, 255, 255, 0.55) 50%, transparent 58%);
+  animation: tileSweep 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes tileSweep { 0%, 55% { transform: translateX(-55%); } 90%, 100% { transform: translateX(55%); } }
+@media (prefers-reduced-motion: reduce) { .quote-tile::after { animation: none; opacity: 0; } }
 .quote-body { display: flex; flex-direction: column; gap: 22px; padding: 18px 0; }
 .quote-text { font-family: var(--body); font-size: 21px; line-height: 1.5; color: var(--ink); }
 .quote-attr { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--faint); }
