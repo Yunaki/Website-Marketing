@@ -4,7 +4,7 @@
 // core, built from the founder's design. Connectors carry a slow lime flow;
 // the core glow breathes. All motion is CSS, off under reduced motion.
 
-const T = { title: "#f2f5fa", sub: "#8fa0b8", label: "#6d7f99", lime: "#b6d552" };
+const T = { title: "#081b39", sub: "#4a5b73", label: "#4a5b73", lime: "#7fa32a" };
 
 function Card({ x, y, w, h, icon, iconBg, iconColor, title, sub }: {
   x: number; y: number; w: number; h: number;
@@ -44,19 +44,19 @@ export function CaseHub() {
           className="hub"
           viewBox="0 0 1160 870"
           role="img"
-          aria-label="Everything orbits one case file. The client portal and intake feed it, the firm asks through Slack and other channels, Gmail feeds it matched client mail, and it drives e-filing across 30 forms, validation, and drafted follow-ups."
+          aria-label="Everything orbits one case file. The client portal and intake feed it, the firm asks through Slack and other channels, Gmail feeds it matched client mail, case management stays synced both ways, and it drives e-filing across 30 forms, validation, and drafted follow-ups."
         >
           <defs>
             <radialGradient id="hubGlow" cx="50%" cy="42%" r="65%">
-              <stop offset="0%" stopColor="#b6d552" stopOpacity="0.55" />
-              <stop offset="55%" stopColor="#7fa32a" stopOpacity="0.18" />
+              <stop offset="0%" stopColor="#b6d552" stopOpacity="0.5" />
+              <stop offset="55%" stopColor="#b6d552" stopOpacity="0.16" />
               <stop offset="100%" stopColor="#b6d552" stopOpacity="0" />
             </radialGradient>
             <marker id="hubArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#5a6b3a" />
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#7fa32a" />
             </marker>
             <marker id="hubArrowDim" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#3a465e" />
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa8bc" />
             </marker>
           </defs>
 
@@ -70,7 +70,7 @@ export function CaseHub() {
           <GroupFrame x={28} y={286} w={630} h={296} label="WHERE YOUR FIRM TALKS" labelY={274} />
           <Card x={52} y={310} w={230} h={72} icon="S" iconBg="#3d2b45" iconColor="#fff" title="Slack" sub="live" />
           <Card x={52} y={398} w={230} h={72} icon="T" iconBg="#33406e" iconColor="#fff" title="Teams" sub="next" />
-          <Card x={52} y={486} w={230} h={72} icon="+" iconBg="#26314a" iconColor="#9fb0c8" title="Others" sub="on ask" />
+          <Card x={52} y={486} w={230} h={72} icon="+" iconBg="#e7edf5" iconColor="#4a5b73" title="Others" sub="on ask" />
           <rect className="hub-group" x={308} y={374} width={184} height={120} rx={34} />
           <text x={400} y={428} textAnchor="middle" fontSize={17.5} fontWeight={800} fill={T.title} fontFamily="Manrope, sans-serif">Communication</text>
           <text x={400} y={452} textAnchor="middle" fontSize={11} fill={T.sub} fontFamily="ui-monospace, Menlo, monospace">one place to ask</text>
@@ -81,11 +81,15 @@ export function CaseHub() {
           {/* gmail, right */}
           <Card x={930} y={392} w={215} h={92} icon="M" iconBg="#c8322a" iconColor="#fff" title="Gmail" sub="client mail, matched" />
 
+          {/* case management, firm side */}
+          <Card x={52} y={620} w={230} h={72} icon="CM" iconBg="#e7edf5" iconColor="#0d2750" title="Case management" sub="synced both ways" />
+          <path className="hub-flow" d="M282,656 H440 V560 H501" markerEnd="url(#hubArrow)" />
+
           {/* the core */}
-          <rect x={505} y={300} width={390} height={330} rx={36} fill="#111a2e" stroke="#26314a" strokeWidth="1" />
+          <rect x={505} y={300} width={390} height={330} rx={36} fill="#ffffff" stroke="rgba(13,39,80,0.12)" strokeWidth="1" />
           <rect className="hub-glowrect" x={505} y={300} width={390} height={330} rx={36} fill="url(#hubGlow)" />
           <text x={700} y={352} textAnchor="middle" fontSize={12} letterSpacing="0.22em" fill={T.lime} fontFamily="ui-monospace, Menlo, monospace">THE FIRM PORTAL</text>
-          <text x={700} y={396} textAnchor="middle" fontSize={34} fontWeight={800} fill="#fff" fontFamily="Manrope, sans-serif" letterSpacing="-0.02em">One case file</text>
+          <text x={700} y={396} textAnchor="middle" fontSize={34} fontWeight={800} fill="#081b39" fontFamily="Manrope, sans-serif" letterSpacing="-0.02em">One case file</text>
           <text x={700} y={424} textAnchor="middle" fontSize={12} letterSpacing="0.14em" fill={T.sub} fontFamily="ui-monospace, Menlo, monospace">YK-2041 · I-130 · SPOUSE</text>
           {stats.map(([n, l, sx, sy]) => (
             <g key={l}>
@@ -105,9 +109,9 @@ export function CaseHub() {
           <path className="hub-dashline" d="M700,656 H557 V700" markerEnd="url(#hubArrowDim)" />
           <path className="hub-dashline" d="M700,656 H787 V700" markerEnd="url(#hubArrowDim)" />
           <path className="hub-dashline" d="M700,656 H1025 V700" markerEnd="url(#hubArrowDim)" />
-          <Card x={455} y={706} w={205} h={92} icon="E" iconBg="#1d2a1a" iconColor={T.lime} title="E-filing" sub="30 forms" />
-          <Card x={685} y={706} w={205} h={92} icon="V" iconBg="#1d2a1a" iconColor={T.lime} title="Validation" sub="14 checks" />
-          <Card x={915} y={706} w={220} h={92} icon="F" iconBg="#1d2a1a" iconColor={T.lime} title="Follow-ups" sub="drafted and chased" />
+          <Card x={455} y={706} w={205} h={92} icon="E" iconBg="#e7edf5" iconColor="#0d2750" title="E-filing" sub="30 forms" />
+          <Card x={685} y={706} w={205} h={92} icon="V" iconBg="#e7edf5" iconColor="#0d2750" title="Validation" sub="14 checks" />
+          <Card x={915} y={706} w={220} h={92} icon="F" iconBg="#e7edf5" iconColor="#0d2750" title="Follow-ups" sub="drafted and chased" />
         </svg>
       </div>
     </div>
