@@ -17,8 +17,8 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 <script>
-/* Founder review mode: SimpleCommenter behind ?review=<token>, SRI-pinned. */
-(function(){try{var K="yk-ed5dc935";var p=new URLSearchParams(location.search);var w=p.get("review")===K;if(w)sessionStorage.setItem("yn-review",K);else w=sessionStorage.getItem("yn-review")===K;if(!w)return;var s=document.createElement("script");s.src="https://www.simplecommenter.com/js/comments.min.js?id=sc_89bdf9fee6ccd44b";s.integrity="sha384-GTf9gnTD2n8HZfbGnQigAGG2AKOhLMqoCy1rjS6WebfSOujo+0sPhCFBckTVI3L6";s.crossOrigin="anonymous";s.defer=true;document.head.appendChild(s);}catch(e){}})();
+/* Founder review mode: SimpleCommenter behind ?review=<token>. Deliberately not SRI-pinned: the vendor rotates the file, and a pin breaks review sessions; the token gate is the containment (accepted risk, founders-only tooling). */
+(function(){try{var K="yk-ed5dc935";var p=new URLSearchParams(location.search);var w=false;if(p.get("review")==="off"){localStorage.removeItem("yn-review");}else if(p.get("review")===K){w=true;localStorage.setItem("yn-review",K);}else{w=localStorage.getItem("yn-review")===K;}if(!w)return;var s=document.createElement("script");s.src="https://www.simplecommenter.com/js/comments.min.js?id=sc_89bdf9fee6ccd44b";s.defer=true;document.head.appendChild(s);}catch(e){}})();
 </script>
 </head>
 <body>

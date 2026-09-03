@@ -1,34 +1,29 @@
 "use client";
 
-// "One case, one week" — what the OS did versus what the team did, day by
-// day, from the demo case the film above tells. Grouped bars grow in on
-// view; hover or focus a day for its numbers; a table view sits behind a
-// disclosure. Palette validated for the dark surface (#7fa32a / #5f8fd6).
+// "70% less time." A donut, per founder review: the lime sweep is the time
+// Yunaki takes off a case, the blue remainder is what your team still
+// spends. Numbers ride the legend so nothing depends on color alone.
 import { useEffect, useRef, useState } from "react";
 import { useInView, useReducedMotion, animate } from "motion/react";
 
-const DAYS = [
-  { day: "Mon", os: 6, team: 1, note: "case opened, intake drafted, link out" },
-  { day: "Tue", os: 0, team: 0, note: "quiet" },
-  { day: "Wed", os: 0, team: 0, note: "quiet" },
-  { day: "Thu", os: 2, team: 0, note: "silence noticed, follow-up sent" },
-  { day: "Fri", os: 28, team: 1, note: "9 documents read, case checked, draft approved" },
-  { day: "Mon", os: 3, team: 1, note: "ready for review, filed, receipt recorded" },
-];
-const MAX = 28;
-const OS_TOTAL = DAYS.reduce((a, d) => a + d.os, 0);
-const TEAM_TOTAL = DAYS.reduce((a, d) => a + d.team, 0);
+const WITHOUT = 10;
+const WITH = 3;
+const SAVING = Math.round((1 - WITH / WITHOUT) * 100);
+const R = 84;
+const CIRC = 2 * Math.PI * R;
 
-function CountUp({ to, on }: { to: number; on: boolean }) {
+function CountUp({ to, on, suffix }: { to: number; on: boolean; suffix?: string }) {
   const reduced = useReducedMotion();
-  const [v, setV] = useState(reduced ? to : 0);
+  // Always start at 0 so the server and client render the same text; a
+  // reduce-motion client jumps straight to the value in the effect.
+  const [v, setV] = useState(0);
   useEffect(() => {
-    if (!on) return;
     if (reduced) { setV(to); return; }
-    const c = animate(0, to, { duration: 1.2, ease: [0.22, 1, 0.36, 1], onUpdate: (x) => setV(Math.round(x)) });
+    if (!on) return;
+    const c = animate(0, to, { duration: 1.3, ease: [0.22, 1, 0.36, 1], onUpdate: (x) => setV(Math.round(x)) });
     return () => c.stop();
   }, [on, reduced, to]);
-  return <>{v}</>;
+  return <>{v}{suffix}</>;
 }
 
 export function CaseWeekChart() {
@@ -36,74 +31,37 @@ export function CaseWeekChart() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const reduced = useReducedMotion();
   const grown = reduced || inView;
+  const sweep = (SAVING / 100) * CIRC;
 
   return (
     <div className="cwk" ref={ref}>
-      <div className="cwk-head">
-        <div>
-          <div className="cwk-title">One case, one week</div>
-          <div className="cwk-sub">the case the film above tells, counted</div>
+      <div className="cwk-donutwrap" role="img"
+        aria-label={`Donut chart. Without Yunaki a case takes about ${WITHOUT} staff hours. With Yunaki about ${WITH}. ${SAVING} percent less of your team's time.`}>
+        <div className="cwk-donut">
+          <svg viewBox="0 0 220 220" aria-hidden="true">
+            <circle cx="110" cy="110" r={R} fill="none" stroke="#5f8fd6" strokeWidth="26" />
+            <circle
+              cx="110" cy="110" r={R} fill="none" stroke="#7fa32a" strokeWidth="26"
+              strokeLinecap="round"
+              strokeDasharray={`${CIRC}`}
+              strokeDashoffset={grown ? CIRC - sweep : CIRC}
+              transform="rotate(-90 110 110)"
+              style={{ transition: reduced ? "none" : "stroke-dashoffset 1.4s cubic-bezier(0.22, 1, 0.36, 1)" }}
+            />
+          </svg>
+          <div className="cwk-center">
+            <span className="cwk-centernum"><CountUp to={SAVING} on={inView} suffix="%" /></span>
+            <span className="cwk-centerword">less time</span>
+          </div>
         </div>
-        <div className="cwk-heroes">
-          <div className="cwk-hero">
-            <span className="cwk-swatch cwk-os" aria-hidden="true"></span>
-            <span className="cwk-num"><CountUp to={OS_TOTAL} on={inView} /></span>
-            <span className="cwk-who">actions by Yunaki</span>
-          </div>
-          <div className="cwk-hero">
-            <span className="cwk-swatch cwk-team" aria-hidden="true"></span>
-            <span className="cwk-num"><CountUp to={TEAM_TOTAL} on={inView} /></span>
-            <span className="cwk-who">touches by your team</span>
+        <div className="cwk-side">
+          <div className="cwk-title">Your team&apos;s hours, per case</div>
+          <div className="cwk-keys">
+            <span><span className="cwk-swatch cwk-team"></span>Without Yunaki, {WITHOUT} hrs</span>
+            <span><span className="cwk-swatch cwk-os"></span>With Yunaki, {WITH} hrs</span>
           </div>
         </div>
       </div>
-
-      <div className="cwk-plot" role="img"
-        aria-label={`Grouped bar chart, six days of one case. Yunaki acted ${OS_TOTAL} times, the team ${TEAM_TOTAL}. Busiest day Friday with 28 actions by Yunaki and one by the team.`}>
-        {DAYS.map((d, i) => (
-          <div key={i} className="cwk-day" tabIndex={0}>
-            <div className="cwk-bars">
-              <div
-                className="cwk-bar cwk-os"
-                style={{
-                  height: grown ? `${Math.max(d.os / MAX, 0.012) * 100}%` : "1.2%",
-                  transitionDelay: `${0.15 + i * 0.09}s`,
-                }}
-              />
-              <div
-                className="cwk-bar cwk-team"
-                style={{
-                  height: grown ? `${Math.max(d.team / MAX, 0.012) * 100}%` : "1.2%",
-                  transitionDelay: `${0.2 + i * 0.09}s`,
-                }}
-              />
-            </div>
-            <div className="cwk-x">{d.day}</div>
-            <div className="cwk-tip" role="tooltip">
-              <strong>{d.day}</strong> · Yunaki {d.os} · team {d.team}
-              <span>{d.note}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="cwk-legend" aria-hidden="true">
-        <span><span className="cwk-swatch cwk-os"></span>Yunaki</span>
-        <span><span className="cwk-swatch cwk-team"></span>Your team</span>
-      </div>
-
-      <details className="cwk-table">
-        <summary>The numbers</summary>
-        <table>
-          <thead><tr><th scope="col">Day</th><th scope="col">Yunaki</th><th scope="col">Your team</th><th scope="col">What happened</th></tr></thead>
-          <tbody>
-            {DAYS.map((d, i) => (
-              <tr key={i}><td>{d.day}</td><td>{d.os}</td><td>{d.team}</td><td>{d.note}</td></tr>
-            ))}
-            <tr><td>Total</td><td>{OS_TOTAL}</td><td>{TEAM_TOTAL}</td><td></td></tr>
-          </tbody>
-        </table>
-      </details>
     </div>
   );
 }
