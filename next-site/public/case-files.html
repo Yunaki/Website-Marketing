@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case files — Yunaki</title>
+<meta name="description" content="Data-backed case files: documented failure patterns in immigration, disability, bankruptcy, and workers comp filings, and the deterministic checks that prevent them.">
+<link rel="canonical" href="https://yunaki.tech/case-files.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yunaki">
+<meta property="og:title" content="Case files — Yunaki">
+<meta property="og:description" content="Documented failure patterns in high-volume legal filings, and the deterministic checks that prevent them. Public numbers, sourced.">
+<meta property="og:url" content="https://yunaki.tech/case-files.html">
+<meta property="og:image" content="https://yunaki.tech/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<script>
+/* Founder review mode: SimpleCommenter behind ?review=<token>, SRI-pinned. */
+(function(){try{var K="yk-ed5dc935";var p=new URLSearchParams(location.search);var w=p.get("review")===K;if(w)sessionStorage.setItem("yn-review",K);else w=sessionStorage.getItem("yn-review")===K;if(!w)return;var s=document.createElement("script");s.src="https://www.simplecommenter.com/js/comments.min.js?id=sc_89bdf9fee6ccd44b";s.integrity="sha384-GTf9gnTD2n8HZfbGnQigAGG2AKOhLMqoCy1rjS6WebfSOujo+0sPhCFBckTVI3L6";s.crossOrigin="anonymous";s.defer=true;document.head.appendChild(s);}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="frame">
+
+  <header class="topbar">
+    <a class="brand" href="index.html">YUNAKI <span>/ the operating system for law firms</span></a>
+    <nav class="topnav">
+      <a href="how-it-works.html">How it works</a>
+      <a href="case-files.html" class="active">Case files</a>
+      <a href="index.html#practices">Practice areas</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-solid" href="contact.html">Book a pilot ↗</a>
+    </nav>
+  </header>
+
+  <div class="page-head">
+    <div class="seclabel">case files · proof</div>
+    <h2>Data-backed scenarios. Zero invented clients.</h2>
+    <div class="prose">
+      <p>Five documented failure patterns. What goes wrong, what it costs, and the check that prevents it.</p>
+    </div>
+    <div class="honesty">
+      Yunaki is pre-launch. No client testimonials, and we won't invent them.
+      Every number below is from published sources: USCIS, SSA.gov, US courts,
+      AIC, AILA, DHS, KFF.
+    </div>
+  </div>
+
+  <div class="files">
+
+    <!-- ============ CF-01 ============ -->
+    <article class="file" id="cf-01">
+      <div class="file-head">
+        <span class="cf-id">CF-01</span>
+        <h3>The $8,000 letter</h3>
+      </div>
+      <div class="file-meta">
+        <div><div class="k">Practice</div><div class="v">Immigration</div></div>
+        <div><div class="k">Failure mode</div><div class="v">Evidence gaps → RFE</div></div>
+        <div><div class="k">Deterministic?</div><div class="v">Yes · checkable pre-filing</div></div>
+      </div>
+      <div class="file-anim">
+        <div class="pipeline" role="img" aria-label="Animation: a filing package is uploaded, scored against known RFE patterns, and cleared for filing.">
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Firm uploads</div>
+            <div class="pl-card">
+              <div class="pl-doctitle">Filing package</div>
+              <div class="pl-line w80"></div>
+              <div class="pl-line w60 d2"></div>
+              <div class="pl-line w70 d3"></div>
+              <div class="pl-chip">forms · evidence · fees</div>
+            </div>
+          </div>
+          <div class="pl-flow" aria-hidden="true"><span class="pl-dot"></span></div>
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Yunaki processes</div>
+            <div class="pl-card">
+              <div class="pl-check">income vs. threshold</div>
+              <div class="pl-check c2">evidence complete?</div>
+              <div class="pl-check c3">dates agree across forms</div>
+            </div>
+          </div>
+          <div class="pl-flow pl-flow2" aria-hidden="true"><span class="pl-dot"></span></div>
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Pre-flight report</div>
+            <div class="pl-card">
+              <div class="pl-field"><span>Risk score</span><i></i></div>
+              <div class="pl-field f2"><span>Deficiencies</span><i></i></div>
+              <div class="pl-field f3"><span>Fix list</span><i></i></div>
+              <div class="pl-stamp">READY TO FILE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="file-body">
+        <div class="file-cols">
+          <div>
+            <h4>The situation</h4>
+            <ul class="list">
+              <li>A package goes out. Months later an RFE lands: something was missing or inconsistent.</li>
+              <li>I-130 denials jumped 28.4% → 41.6% in one year. More scrutiny, more RFEs.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>The cost</h4>
+            <ul class="list">
+              <li>10 to 15 attorney hours: $3,000 to $8,000 per response</li>
+              <li>2 to 6 months of added delay</li>
+              <li>87-day deadline. Miss it: automatic denial, no refund</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fix">
+          <h4>The Yunaki fix</h4>
+          <p>
+            The package is scored against known RFE patterns before filing.
+            Deficiencies get fixed while they cost minutes, not thousands.
+            When an RFE still arrives, firm memory surfaces your most similar
+            successful response. Real work product, not a hallucination.
+          </p>
+        </div>
+      </div>
+      <div class="sources">
+        sources: AILA Marketplace Study 2022 · USCIS FY2024-25 processing data · AIC Dashboard
+      </div>
+    </article>
+
+    <!-- ============ CF-02 ============ -->
+    <article class="file" id="cf-02">
+      <div class="file-head">
+        <span class="cf-id">CF-02</span>
+        <h3>"123 Main St" ≠ "123 Main Street"</h3>
+      </div>
+      <div class="file-meta">
+        <div><div class="k">Practice</div><div class="v">Immigration</div></div>
+        <div><div class="k">Failure mode</div><div class="v">Cross-form inconsistency</div></div>
+        <div><div class="k">Deterministic?</div><div class="v">Yes · pure field comparison</div></div>
+      </div>
+      <div class="file-anim">
+        <div class="pipeline" role="img" aria-label="Animation: a passport and I-94 are uploaded, one master record is built, and the same data populates every form in the package with all fields matching.">
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Firm uploads</div>
+            <div class="pl-card">
+              <div class="pl-doctitle">Passport + I-94</div>
+              <div class="pl-line w80"></div>
+              <div class="pl-line w60 d2"></div>
+              <div class="pl-line w70 d3"></div>
+              <div class="pl-chip">one client · one record</div>
+            </div>
+          </div>
+          <div class="pl-flow" aria-hidden="true"><span class="pl-dot"></span></div>
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Yunaki processes</div>
+            <div class="pl-card">
+              <div class="pl-check">extract every field</div>
+              <div class="pl-check c2">build master record</div>
+              <div class="pl-check c3">compare across all forms</div>
+            </div>
+          </div>
+          <div class="pl-flow pl-flow2" aria-hidden="true"><span class="pl-dot"></span></div>
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Package populated</div>
+            <div class="pl-card">
+              <div class="pl-field"><span>Names</span><i></i></div>
+              <div class="pl-field f2"><span>Addresses</span><i></i></div>
+              <div class="pl-field f3"><span>Dates</span><i></i></div>
+              <div class="pl-stamp">ALL FIELDS MATCH</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="file-body">
+        <div class="file-cols">
+          <div>
+            <h4>The situation</h4>
+            <ul class="list">
+              <li>Five forms filed together must match perfectly: I-130, I-485, I-864, I-765, I-131.</li>
+              <li>Agencies now cross-check filings against each other under expanded data-sharing.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>The cost</h4>
+            <ul class="list">
+              <li>Cross-form inconsistency is a top RFE trigger</li>
+              <li>#1 I-485 mistake: a blank field. USCIS requires "N/A"</li>
+              <li>45,762 EADs undeliverable in FY2023 from data-entry errors</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fix">
+          <h4>The Yunaki fix</h4>
+          <p>
+            One master record per client. Every field is populated from it and
+            cross-checked before filing. Mismatches get flagged, not filed.
+            Blank fields are structurally impossible.
+          </p>
+        </div>
+      </div>
+      <div class="sources">
+        sources: USCIS filing guidance · DHS CIS Ombudsman Report 2024 · USCIS/DHS data-sharing policy 2025
+      </div>
+    </article>
+
+    <!-- ============ CF-03 ============ -->
+    <article class="file" id="cf-03">
+      <div class="file-head">
+        <span class="cf-id">CF-03</span>
+        <h3>The 64% wall</h3>
+      </div>
+      <div class="file-meta">
+        <div><div class="k">Practice</div><div class="v">SSDI / SSI Disability</div></div>
+        <div><div class="k">Failure mode</div><div class="v">Preventable initial denials</div></div>
+        <div><div class="k">Deterministic?</div><div class="v">Yes · dates, math, completeness</div></div>
+      </div>
+      <div class="file-anim">
+        <div class="pipeline" role="img" aria-label="Animation: medical records and work history are uploaded, the engine runs income and date math, and the SSA package is scored before submission.">
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Firm uploads</div>
+            <div class="pl-card">
+              <div class="pl-doctitle">Medical records</div>
+              <div class="pl-line w80"></div>
+              <div class="pl-line w60 d2"></div>
+              <div class="pl-line w70 d3"></div>
+              <div class="pl-chip">+ work history · income docs</div>
+            </div>
+          </div>
+          <div class="pl-flow" aria-hidden="true"><span class="pl-dot"></span></div>
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Yunaki processes</div>
+            <div class="pl-card">
+              <div class="pl-check">SGA income math</div>
+              <div class="pl-check c2">onset date vs. DLI</div>
+              <div class="pl-check c3">SSA forms complete?</div>
+            </div>
+          </div>
+          <div class="pl-flow pl-flow2" aria-hidden="true"><span class="pl-dot"></span></div>
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Claim package</div>
+            <div class="pl-card">
+              <div class="pl-field"><span>SSA-3368</span><i></i></div>
+              <div class="pl-field f2"><span>SSA-3369</span><i></i></div>
+              <div class="pl-field f3"><span>SSA-827</span><i></i></div>
+              <div class="pl-stamp">SCORED: STRONG</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="file-body">
+        <div class="file-cols">
+          <div>
+            <h4>The situation</h4>
+            <ul class="list">
+              <li>~2M disability claims a year. 64% denied at the initial level.</li>
+              <li>65% of those denials are preventable: date math, income limits, missing forms.</li>
+              <li>Next real chance is a hearing, 1 to 2 years away.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>The cost</h4>
+            <ul class="list">
+              <li>$1,500+/month in lost benefits per denied claimant</li>
+              <li>6 to 8 months for an initial decision</li>
+              <li>With a representative: 3x approval, 316 fewer days</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fix">
+          <h4>The Yunaki fix</h4>
+          <p>
+            Disability Pre-Flight runs the math before submission: SGA limits,
+            onset vs. DLI, form completeness, cross-form consistency, state DDS
+            rules. Output: an approval-probability score and a fix list.
+          </p>
+        </div>
+      </div>
+      <div class="sources">
+        sources: SSA.gov FY2025 statistics · SSA press release July 2025 · NBER/GAO representation studies
+      </div>
+    </article>
+
+    <!-- ============ CF-04 ============ -->
+    <article class="file" id="cf-04">
+      <div class="file-head">
+        <span class="cf-id">CF-04</span>
+        <h3>Dismissed on arithmetic</h3>
+      </div>
+      <div class="file-meta">
+        <div><div class="k">Practice</div><div class="v">Bankruptcy</div></div>
+        <div><div class="k">Failure mode</div><div class="v">Means-test & schedule mismatch</div></div>
+        <div><div class="k">Deterministic?</div><div class="v">Yes · pure math</div></div>
+      </div>
+      <div class="file-anim">
+        <div class="pipeline" role="img" aria-label="Animation: income documents and a credit report are uploaded, the engine computes the means test and reconciles schedules, and the petition is cleared.">
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Firm uploads</div>
+            <div class="pl-card">
+              <div class="pl-doctitle">Income + credit report</div>
+              <div class="pl-line w80"></div>
+              <div class="pl-line w60 d2"></div>
+              <div class="pl-line w70 d3"></div>
+              <div class="pl-chip">20+ schedules per petition</div>
+            </div>
+          </div>
+          <div class="pl-flow" aria-hidden="true"><span class="pl-dot"></span></div>
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Yunaki processes</div>
+            <div class="pl-card">
+              <div class="pl-check">means test math</div>
+              <div class="pl-check c2">Schedule I = Schedule J</div>
+              <div class="pl-check c3">all debts listed?</div>
+            </div>
+          </div>
+          <div class="pl-flow pl-flow2" aria-hidden="true"><span class="pl-dot"></span></div>
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Petition</div>
+            <div class="pl-card">
+              <div class="pl-field"><span>Form 122</span><i></i></div>
+              <div class="pl-field f2"><span>Sched. I/J</span><i></i></div>
+              <div class="pl-field f3"><span>Sched. F</span><i></i></div>
+              <div class="pl-stamp">RECONCILED</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="file-body">
+        <div class="file-cols">
+          <div>
+            <h4>The situation</h4>
+            <ul class="list">
+              <li>574,314 filings in 2025, up 11.5% year over year.</li>
+              <li>48% of Chapter 13 cases are dismissed. Thrown out, no debt relief.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>The cost</h4>
+            <ul class="list">
+              <li>Means-test miscalculation on Form 122A/B/C</li>
+              <li>Schedule I income that contradicts Schedule J expenses</li>
+              <li>Credit-report debts missing from the schedules</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fix">
+          <h4>The Yunaki fix</h4>
+          <p>
+            The means test is computed, not transcribed. Schedules are
+            reconciled against one master record and the credit report.
+            The petition gets a dismissal-risk score before it's filed.
+          </p>
+        </div>
+      </div>
+      <div class="sources">
+        sources: US federal courts filing statistics 2025 · Chapter 13 dismissal analyses
+      </div>
+    </article>
+
+    <!-- ============ CF-05 ============ -->
+    <article class="file" id="cf-05">
+      <div class="file-head">
+        <span class="cf-id">CF-05</span>
+        <h3>The 40% intake</h3>
+      </div>
+      <div class="file-meta">
+        <div><div class="k">Practice</div><div class="v">Workers Comp / Injury</div></div>
+        <div><div class="k">Failure mode</div><div class="v">Cross-document mismatch</div></div>
+        <div><div class="k">Deterministic?</div><div class="v">Yes · reconciliation checks</div></div>
+      </div>
+      <div class="file-anim">
+        <div class="pipeline" role="img" aria-label="Animation: medical bills and wage records are uploaded, the engine reconciles them against the injury report, and the claim is cleared as consistent.">
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Firm uploads</div>
+            <div class="pl-card">
+              <div class="pl-doctitle">Bills + wage records</div>
+              <div class="pl-line w80"></div>
+              <div class="pl-line w60 d2"></div>
+              <div class="pl-line w70 d3"></div>
+              <div class="pl-chip">+ First Report of Injury</div>
+            </div>
+          </div>
+          <div class="pl-flow" aria-hidden="true"><span class="pl-dot"></span></div>
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Yunaki processes</div>
+            <div class="pl-card">
+              <div class="pl-check">injury = bills = codes</div>
+              <div class="pl-check c2">wages = employer report</div>
+              <div class="pl-check c3">state deadlines met?</div>
+            </div>
+          </div>
+          <div class="pl-flow pl-flow2" aria-hidden="true"><span class="pl-dot"></span></div>
+          <div class="pl-stage" aria-hidden="true">
+            <div class="pl-cardlabel">Claim</div>
+            <div class="pl-card">
+              <div class="pl-field"><span>CPT codes</span><i></i></div>
+              <div class="pl-field f2"><span>Wages</span><i></i></div>
+              <div class="pl-field f3"><span>Filing date</span><i></i></div>
+              <div class="pl-stamp">CONSISTENT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="file-body">
+        <div class="file-cols">
+          <div>
+            <h4>The situation</h4>
+            <ul class="list">
+              <li>3 to 4 million claims a year. 40% of initial submissions contain errors.</li>
+              <li>67% of denied claims are eventually paid. The denial was mostly delay.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>The cost</h4>
+            <ul class="list">
+              <li>Months of delay on claims that were valid</li>
+              <li>Injury descriptions that contradict bills and codes</li>
+              <li>No dedicated validation tool exists in the vertical</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fix">
+          <h4>The Yunaki fix</h4>
+          <p>
+            WC Pre-Flight reconciles the claim the way an adjuster will:
+            injury = bills = codes, wages = employer report, state deadlines
+            applied deterministically. Firm memory learns each carrier's patterns.
+          </p>
+        </div>
+      </div>
+      <div class="sources">
+        sources: IBISWorld 2025 · Kognitos claims-error analysis · industry conversion statistics
+      </div>
+    </article>
+
+    <!-- ============ injury-firm note ============ -->
+    <div class="side-note">
+      <h3>A note for injury &amp; MVA firms</h3>
+      <p>
+        The demand letter stays with your attorneys. It's judgment work.
+        Everything around it is ours: intake extraction, medical chronologies
+        with verified dates and amounts, deadline tracking, and demand-package
+        assembly with every fact checked.
+      </p>
+      <p>
+        Running an injury practice?
+        <a href="contact.html">Talk to us</a>. Early conversations shape what we build.
+      </p>
+    </div>
+
+  </div>
+
+  <section class="cta-band">
+    <div class="seclabel">pilots</div>
+    <h2>Have a filing that went sideways?</h2>
+    <p class="lead">
+      Send one anonymized package that drew an RFE, denial, or dismissal.
+      We'll show you what pre-flight would have caught.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn btn-solid" href="contact.html">Book a pilot ↗</a>
+      <a class="btn" href="how-it-works.html">How it works</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="fcol"><strong>YUNAKI</strong> · © 2026 · built by two founders</div>
+    <div class="fcol">your cases · your rules · your memory</div>
+    <div class="fcol">
+      <a href="index.html">home</a> ·
+      <a href="how-it-works.html">how it works</a> ·
+      <a href="contact.html">book a pilot</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

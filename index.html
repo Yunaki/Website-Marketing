@@ -57,10 +57,10 @@
     </div>
     <h1>The agentic OS that <span class="hl">never</span> <span class="hl">guesses</span> your cases.</h1>
     <p class="lead">
-      Yunaki runs the whole case for immigration law firms — intake, documents,
-      checks, follow-ups — so the work moves smoothly from first call to filing.
-      <strong>Facts, fees, and deadlines come from a deterministic engine.</strong>
-      AI drafts. It never decides. And it never files — your attorneys do.
+      One OS runs the case — intake, documents, checks, follow-ups — from
+      first call to filing.
+      <strong>Facts come from a deterministic engine.</strong>
+      AI drafts. You decide. Your attorneys file.
     </p>
     <div class="hero-ctas">
       <a class="btn btn-solid" href="case-files.html">See the case files →</a>
@@ -126,67 +126,84 @@
   </section>
 
   <section class="sec-pad" id="how">
-    <div class="seclabel">§02 · how it works</div>
-    <h2>The client uploads. The engine reads, checks, and asks.</h2>
+    <div class="seclabel">§02 · the system</div>
+    <h2>One OS. Everything connected.</h2>
     <div class="prose">
-      <p>Watch it run: a passport goes in, a checked case file comes out.</p>
+      <p>Tap any part — or just watch a case move.</p>
     </div>
 
     <figure class="fig">
-      <div class="pipeline" role="img" aria-label="Animation: a client uploads a passport through the portal, the deterministic engine extracts and cross-checks the data, and the case file comes back checked with follow-up questions drafted.">
-        <div class="pl-stage" aria-hidden="true">
-          <div class="pl-cardlabel">Client uploads</div>
-          <div class="pl-card">
-            <div class="pl-doctitle">Passport</div>
-            <div class="pl-line w80"></div>
-            <div class="pl-line w60 d2"></div>
-            <div class="pl-line w70 d3"></div>
-            <div class="pl-chip">+ I-94 · pay stubs · prior filings</div>
-          </div>
-        </div>
-        <div class="pl-flow" aria-hidden="true"><span class="pl-dot"></span></div>
-        <div class="pl-stage" aria-hidden="true">
-          <div class="pl-cardlabel">Yunaki processes</div>
-          <div class="pl-card">
-            <div class="pl-check">read every field</div>
-            <div class="pl-check c2">compare answers to documents</div>
-            <div class="pl-check c3">find what's missing</div>
-          </div>
-        </div>
-        <div class="pl-flow pl-flow2" aria-hidden="true"><span class="pl-dot"></span></div>
-        <div class="pl-stage" aria-hidden="true">
-          <div class="pl-cardlabel">Case checked</div>
-          <div class="pl-card">
-            <div class="pl-field"><span>Conflicts flagged</span><i></i></div>
-            <div class="pl-field f2"><span>Follow-ups drafted</span><i></i></div>
-            <div class="pl-field f3"><span>Docs listed</span><i></i></div>
-            <div class="pl-stamp">CHECKED</div>
-          </div>
-        </div>
+      <div class="osmap-scroll">
+        <svg class="osmap" viewBox="0 0 1040 580" role="group"
+             aria-label="Interactive map of the Yunaki system: client intake and Gmail flow into the Yunaki core, which connects to Slack, drafted follow-ups, and attorney filing. A dashed approval gate sits before anything leaves.">
+
+          <!-- column headers -->
+          <text class="oshdr" x="30" y="76">YOUR CLIENTS</text>
+          <text class="oshdr" x="395" y="200">THE AGENTIC OS</text>
+          <text class="oshdr" x="790" y="48">YOUR FIRM</text>
+
+          <!-- edges -->
+          <path id="edge-intake" class="osedge" d="M245,144 H320 V262 H395"/>
+          <path id="edge-gmail"  class="osedge" d="M245,420 H320 V324 H395"/>
+          <path id="edge-slack"  class="osedge" d="M650,258 H715 V114 H790"/>
+          <path id="edge-follow" class="osedge" d="M650,293 H720 V316 H790"/>
+          <path id="edge-filing" class="osedge" d="M650,328 H720 V510 H790"/>
+          <path id="edge-approve" class="osedge" d="M900,162 V268"/>
+
+          <!-- the approval gate -->
+          <line class="osgate" x1="745" y1="225" x2="745" y2="575"/>
+          <text class="osgate-label" transform="rotate(-90 764 400)" x="764" y="400" text-anchor="middle">NOTHING SENDS WITHOUT YOU</text>
+
+          <!-- moving dots -->
+          <circle class="osdot" r="4"><animateMotion dur="3.6s" repeatCount="indefinite"><mpath href="#edge-intake"/></animateMotion></circle>
+          <circle class="osdot" r="4"><animateMotion dur="4.4s" begin="0.9s" repeatCount="indefinite"><mpath href="#edge-gmail"/></animateMotion></circle>
+          <circle class="osdot" r="4"><animateMotion dur="3.8s" begin="1.6s" repeatCount="indefinite"><mpath href="#edge-slack"/></animateMotion></circle>
+          <circle class="osdot" r="4"><animateMotion dur="4.1s" begin="2.4s" repeatCount="indefinite"><mpath href="#edge-follow"/></animateMotion></circle>
+          <circle class="osdot" r="4"><animateMotion dur="4.8s" begin="3.1s" repeatCount="indefinite"><mpath href="#edge-filing"/></animateMotion></circle>
+          <circle class="osdot" r="4"><animateMotion dur="2.6s" begin="1.2s" repeatCount="indefinite"><mpath href="#edge-approve"/></animateMotion></circle>
+
+          <!-- nodes -->
+          <g class="osnode" data-node="intake" tabindex="0" role="button" aria-label="Client intake">
+            <rect x="30" y="96" width="215" height="96" rx="1"/>
+            <text class="osnode-title" x="50" y="136">Client intake</text>
+            <text class="osnode-sub" x="50" y="162">answers + documents</text>
+          </g>
+          <g class="osnode" data-node="gmail" tabindex="0" role="button" aria-label="Gmail">
+            <rect x="30" y="372" width="215" height="96" rx="1"/>
+            <text class="osnode-title" x="50" y="412">Gmail</text>
+            <text class="osnode-sub" x="50" y="438">email matched to the case</text>
+          </g>
+          <g class="osnode" data-node="core" tabindex="0" role="button" aria-label="The Yunaki core">
+            <rect x="395" y="218" width="255" height="150" rx="1"/>
+            <text class="oscore-title" x="422" y="285">YUNAKI</text>
+            <text class="osnode-sub" x="422" y="315">reads · checks · drafts</text>
+            <text class="osnode-sub" x="422" y="337">never guesses</text>
+          </g>
+          <g class="osnode" data-node="slack" tabindex="0" role="button" aria-label="Slack">
+            <rect x="790" y="66" width="220" height="96" rx="1"/>
+            <text class="osnode-title" x="810" y="106">Slack</text>
+            <text class="osnode-sub" x="810" y="132">ask @yunaki · approve</text>
+          </g>
+          <g class="osnode" data-node="follow" tabindex="0" role="button" aria-label="Follow-ups">
+            <rect x="790" y="268" width="220" height="96" rx="1"/>
+            <text class="osnode-title" x="810" y="308">Follow-ups</text>
+            <text class="osnode-sub" x="810" y="334">written for you · you send</text>
+          </g>
+          <g class="osnode gold" data-node="filing" tabindex="0" role="button" aria-label="Filing, done by your attorney">
+            <rect x="790" y="462" width="220" height="96" rx="1"/>
+            <text class="osnode-title" x="810" y="502">Filing</text>
+            <text class="osnode-sub" x="810" y="528">your attorney signs + files</text>
+            <text class="osstamp" x="948" y="486">HUMAN</text>
+          </g>
+        </svg>
       </div>
-      <figcaption class="fig-cap">
-        <strong>Fig. 1 · The Yunaki loop.</strong> The documents are read, the
-        answers are checked against them, and what's missing becomes a
-        follow-up question — written for you, sent by you.
+      <figcaption class="osmap-cap" id="osmap-cap" aria-live="polite">
+        <strong>Fig. 1 · The Yunaki OS.</strong> Tap any part of the system — or just watch a case move.
       </figcaption>
     </figure>
 
-    <div class="duo">
-      <div>
-        <div class="card-label">ON EVERY ANSWER</div>
-        <p>Every answer gets checked: complete, incomplete, or can't tell.
-        If the file and the documents disagree — a name, a date, an address —
-        you hear about it before USCIS does.</p>
-      </div>
-      <div>
-        <div class="card-label">ON EVERY EMAIL</div>
-        <p>Nothing goes to a client without your OK. Yunaki writes the
-        follow-up; you read it and press send. Always.</p>
-      </div>
-    </div>
-
     <div class="after-fig-cta">
-      <a class="btn btn-solid" href="case-files.html">See it for every case study →</a>
+      <a class="btn btn-solid" href="case-files.html">See the case files →</a>
       <a class="btn" href="how-it-works.html">Read the full architecture</a>
     </div>
   </section>
@@ -200,62 +217,32 @@
 
     <div class="practices">
       <div class="practice">
-        <div class="practice-head"><h3>Client portal</h3><span class="chip chip-live">Live</span></div>
-        <p><strong>Intake without the email ping-pong.</strong></p>
-        <ul class="list">
-          <li>Clients answer questions and upload documents through one secure link</li>
-          <li>Spouses and employers each see only their own questions</li>
-          <li>Need a correction? Unlock that section and the client fixes it</li>
-        </ul>
+        <div class="practice-head"><h3>Client intake</h3><span class="chip chip-live">Live</span></div>
+        <p>Clients answer and upload through one secure link. No email ping-pong.</p>
       </div>
       <div class="practice">
         <div class="practice-head"><h3>Document reading</h3><span class="chip chip-live">Live</span></div>
-        <p><strong>Reads the documents. Refuses to guess.</strong></p>
-        <ul class="list">
-          <li>Passports, green cards, I-94s, birth and marriage certificates, and more</li>
-          <li>Anything unreadable is left blank for you — never made up</li>
-          <li>Wrong document uploaded? Yunaki says so instead of misreading it</li>
-        </ul>
+        <p>Passports, green cards, I-94s — read field by field. Unreadable stays blank, never made up.</p>
       </div>
       <div class="practice">
         <div class="practice-head"><h3>The case check</h3><span class="chip chip-live">Live</span></div>
-        <p><strong>One click answers: is this case complete?</strong></p>
-        <ul class="list">
-          <li>Every answer checked against the documents</li>
-          <li>Missing or conflicting information flagged in plain English</li>
-          <li>Follow-up questions for the client, already written</li>
-        </ul>
+        <p>One click: is this case complete? Conflicts flagged, follow-ups already written.</p>
       </div>
       <div class="practice">
         <div class="practice-head"><h3>USCIS requirements</h3><span class="chip chip-live">Live</span></div>
-        <p><strong>30 visa types, verified — not memorized.</strong></p>
-        <ul class="list">
-          <li>Which forms, which editions, which supporting documents — per visa type</li>
-          <li>Where and how to file, checked against official sources and dated</li>
-          <li>When we haven't verified something, it says so</li>
-        </ul>
+        <p>30 visa types: forms, editions, documents, where to file. Verified and dated.</p>
       </div>
       <div class="practice">
         <div class="practice-head"><h3>Slack assistant</h3><span class="chip chip-live">Live</span></div>
-        <p><strong>Ask @yunaki, right where your firm already talks.</strong></p>
-        <ul class="list">
-          <li>"What's the status on the Patel case?" — answered from the file</li>
-          <li>"Run the check" — done, results in the thread</li>
-          <li>Client emails drafted for you, waiting for your approval</li>
-        </ul>
+        <p>"What's the status on the Patel case?" Ask @yunaki, get it from the file.</p>
       </div>
       <div class="practice">
         <div class="practice-head"><h3>You approve every email</h3><span class="chip chip-live">Live</span></div>
-        <p><strong>Yunaki writes. You send. Always.</strong></p>
-        <ul class="list">
-          <li>Every email waits for your approval — no exceptions</li>
-          <li>It can only write to addresses your firm put on file</li>
-          <li>Everything it does is on the record</li>
-        </ul>
+        <p>Yunaki writes. You send. Always. Everything on the record.</p>
       </div>
       <div class="practice-foot">
-        the rule, in one sentence: <strong>Yunaki can read, check, and draft —
-        it can never send, sign, or file.</strong>
+        the rule: <strong>Yunaki can read, check, and draft — it can never
+        send, sign, or file.</strong>
         <a href="security.html">read the guardrails →</a>
       </div>
     </div>
@@ -271,57 +258,27 @@
     <div class="practices">
       <div class="practice">
         <div class="practice-head"><h3>Immigration</h3><span class="chip chip-live">Pilots open</span></div>
-        <p><strong>I-130 denials jumped 28.4% → 41.6%</strong> in FY 2025.</p>
-        <ul class="list">
-          <li>Client intake, document reading, and case checks — on live cases today</li>
-          <li>30 visa types: family, work, humanitarian, citizenship</li>
-          <li>Forms prepared from checked information — you review every field</li>
-        </ul>
+        <p><strong>Live today:</strong> intake, document reading, and case checks across 30 visa types. I-130 denials jumped 28.4% → 41.6% in FY 2025 — checking beats redoing.</p>
       </div>
       <div class="practice">
         <div class="practice-head"><h3>SSDI / SSI Disability</h3><span class="chip">In development</span></div>
-        <p><strong>64% of ~2M annual claims are denied initially.</strong> 65% preventable.</p>
-        <ul class="list">
-          <li>SGA income math, onset-date vs. DLI validation</li>
-          <li>Form completeness: SSA-3368 · 3369 · 827 · 3373</li>
-          <li>Approval probability score + deficiency list</li>
-        </ul>
+        <p><strong>64% of ~2M annual claims are denied initially.</strong> 65% of those are preventable.</p>
       </div>
       <div class="practice">
         <div class="practice-head"><h3>Bankruptcy</h3><span class="chip">Roadmap</span></div>
-        <p><strong>48% of Chapter 13 cases get dismissed.</strong> Often on pure arithmetic.</p>
-        <ul class="list">
-          <li>Means test (Form 122A/B/C) as pure math</li>
-          <li>Schedule I = Schedule J = means test consistency</li>
-          <li>Credit report vs. listed debts completeness</li>
-        </ul>
+        <p><strong>48% of Chapter 13 cases get dismissed</strong> — often on pure arithmetic.</p>
       </div>
       <div class="practice">
         <div class="practice-head"><h3>Workers Compensation</h3><span class="chip">Roadmap</span></div>
-        <p><strong>40% of initial claim submissions contain errors.</strong> No dedicated tool exists.</p>
-        <ul class="list">
-          <li>Injury description = medical bills = CPT codes</li>
-          <li>Wage records vs. employer report reconciliation</li>
-          <li>State fee schedules + timely-filing deadlines</li>
-        </ul>
+        <p><strong>40% of initial claims contain errors.</strong> No dedicated tool exists.</p>
       </div>
       <div class="practice">
         <div class="practice-head"><h3>Personal Injury / MVA</h3><span class="chip">Roadmap</span></div>
-        <p><strong>The facts inside every demand package,</strong> handled deterministically.</p>
-        <ul class="list">
-          <li>Intake extraction from crash reports + medical records</li>
-          <li>Chronologies with verified dates and bills</li>
-          <li>Deadline tracking + demand-package assembly</li>
-        </ul>
+        <p><strong>Every fact in the demand package</strong> — dates, bills, chronologies — verified.</p>
       </div>
       <div class="practice">
         <div class="practice-head"><h3>Healthcare Claims</h3><span class="chip">Roadmap</span></div>
         <p><strong>$262B in claims denied annually.</strong> 85% preventable.</p>
-        <ul class="list">
-          <li>Claim pre-flight for CMS-1500 / UB-04</li>
-          <li>Diagnosis = operative report = medical record</li>
-          <li>Payer-rule and timely-filing validation</li>
-        </ul>
       </div>
       <div class="practice-foot">
         one OS: <strong>deterministic checks + firm memory.</strong>
@@ -389,5 +346,74 @@
   </footer>
 
 </div>
+
+<script>
+(function () {
+  var cap = document.getElementById("osmap-cap");
+  if (!cap) return;
+
+  var texts = {
+    intake: "<strong>Client intake.</strong> Clients answer and upload through one secure link — every answer lands checked, not retyped.",
+    gmail:  "<strong>Gmail.</strong> A client email arrives. Yunaki matches it to the case and drafts the reply.",
+    core:   "<strong>The OS.</strong> Reads the documents, checks every answer, finds what's missing. It never guesses.",
+    slack:  "<strong>Slack.</strong> Ask @yunaki anything about a case. Approve its drafts right in the thread.",
+    follow: "<strong>Follow-ups.</strong> The email to the client is already written. You read it, you press send.",
+    filing: "<strong>Filing.</strong> Forms prepped and checked. Your attorney signs and files — always a human."
+  };
+  var edges = {
+    intake: ["edge-intake"],
+    gmail:  ["edge-gmail"],
+    core:   ["edge-intake", "edge-gmail", "edge-slack", "edge-follow", "edge-filing"],
+    slack:  ["edge-slack", "edge-approve"],
+    follow: ["edge-follow", "edge-approve"],
+    filing: ["edge-filing"]
+  };
+  var defaultCap = cap.innerHTML;
+  var nodes = Array.prototype.slice.call(document.querySelectorAll(".osnode"));
+  var order = ["intake", "gmail", "core", "slack", "follow", "filing"];
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function clearAll() {
+    document.querySelectorAll(".osnode.lit, .osedge.lit").forEach(function (el) {
+      el.classList.remove("lit");
+    });
+  }
+  function light(name) {
+    clearAll();
+    var node = document.querySelector('.osnode[data-node="' + name + '"]');
+    if (node) node.classList.add("lit");
+    (edges[name] || []).forEach(function (id) {
+      var e = document.getElementById(id);
+      if (e) e.classList.add("lit");
+    });
+    cap.innerHTML = texts[name] || defaultCap;
+  }
+
+  var tour = null, step = 0;
+  function stopTour() { if (tour) { clearInterval(tour); tour = null; } }
+  if (!reduced) {
+    tour = setInterval(function () {
+      light(order[step]);
+      step = (step + 1) % order.length;
+    }, 3200);
+  } else {
+    document.querySelectorAll(".osmap animateMotion").forEach(function (a) {
+      if (a.parentNode && a.parentNode.parentNode) {
+        a.parentNode.parentNode.removeChild(a.parentNode);
+      }
+    });
+  }
+
+  nodes.forEach(function (n) {
+    var name = n.getAttribute("data-node");
+    ["pointerenter", "focus", "click"].forEach(function (evt) {
+      n.addEventListener(evt, function () { stopTour(); light(name); });
+    });
+    n.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); stopTour(); light(name); }
+    });
+  });
+})();
+</script>
 </body>
 </html>
