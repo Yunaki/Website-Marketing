@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Serif_4, IBM_Plex_Mono, Inter } from "next/font/google";
+import { ReviewComments } from "@/components/ReviewComments";
 import "./globals.css";
 
 const serif = Source_Serif_4({
@@ -53,7 +54,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${serif.variable} ${mono.variable} ${sans.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <ReviewComments />
+      </body>
     </html>
   );
 }
