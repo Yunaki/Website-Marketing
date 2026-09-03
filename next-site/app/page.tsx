@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { OsMap } from "@/components/OsMap";
 import { Reveal } from "@/components/Reveal";
 import { StatNum } from "@/components/StatNum";
+import { YunakiDesk } from "@/components/desk/YunakiDesk";
 
 const TICKER = [
   "SSDI initial denials: 64% (FY 2025)",
@@ -45,6 +46,17 @@ export default function Home() {
     <div className="frame">
       <Topbar />
       <Hero />
+
+      <section className="sec-pad" id="watch" style={{ paddingTop: 0 }}>
+        <figure className="fig" style={{ marginTop: 24 }}>
+          <YunakiDesk />
+          <figcaption className="fig-cap">
+            <strong>Fig. 0 · The Desk.</strong> One I-130 case across Slack, the
+            workspace, the client&apos;s phone, and Gmail. Every send approved by
+            a human. Filed by the attorney.
+          </figcaption>
+        </figure>
+      </section>
 
       <div className="ticker" aria-hidden="true">
         <div className="ticker-track">
