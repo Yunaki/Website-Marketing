@@ -35,12 +35,6 @@ const PRACTICES = [
   { title: "Healthcare Claims", chip: "Roadmap", text: <><strong>$262B in claims denied annually.</strong> 85% preventable.</> },
 ];
 
-const CASE_FILES = [
-  { id: "cf-01", tag: "CF-01 · IMMIGRATION", title: "The $8,000 letter", text: "One RFE burns 10 to 15 attorney hours and adds months of delay. Miss the deadline and the case is denied." },
-  { id: "cf-03", tag: "CF-03 · DISABILITY", title: "The 64% wall", text: "Two million SSDI claims a year. 64% denied at first pass. 65% of those denials were preventable." },
-  { id: "cf-04", tag: "CF-04 · BANKRUPTCY", title: "Dismissed on arithmetic", text: "48% of Chapter 13 cases are thrown out. Means-test math and mismatched schedules do most of the damage." },
-];
-
 export default function Home() {
   return (
     <div className="frame">
@@ -116,46 +110,39 @@ export default function Home() {
               <p>{p.text}</p>
             </Reveal>
           ))}
-          <div className="practice-foot">
-            one OS. <strong>deterministic checks + firm memory.</strong> a new
-            practice area is a playbook away, not a new product.
-          </div>
         </div>
       </section>
 
       <section className="sec-pad" id="proof">
         <Reveal>
-          <div className="seclabel">proof</div>
-          <h2>Case files, not testimonials.</h2>
-          <div className="prose">
-            <p>No invented clients. Every number is public and sourced.</p>
-          </div>
+          <div className="seclabel">from the pilot</div>
+          <h2>The people running it.</h2>
         </Reveal>
-        <div className="cf-grid">
-          {CASE_FILES.map((c, i) => (
-            <Reveal key={c.id} delay={i * 0.1}>
-              <a className="cf-card" href={`/case-files.html#${c.id}`}>
-                <span className="cf-id">{c.tag}</span>
-                <h3>{c.title}</h3>
-                <p>{c.text}</p>
-                <span className="cf-go">Read case file →</span>
-              </a>
-            </Reveal>
-          ))}
-        </div>
-        <div className="after-fig-cta">
-          <a className="btn" href="/case-files.html">All five case files →</a>
+        <div className="quotes">
+          <Reveal className="quote">
+            <p className="quote-text">[ Allison&apos;s words go here ]</p>
+            <div className="quote-who">
+              <span className="quote-name">Allison Yew</span>
+              <span className="quote-role">Senior attorney</span>
+            </div>
+          </Reveal>
+          <Reveal delay={0.12} className="quote">
+            <p className="quote-text">[ Isaiah&apos;s words go here ]</p>
+            <div className="quote-who">
+              <span className="quote-name">Isaiah</span>
+              <span className="quote-role">Paralegal</span>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="cta-band" id="pilot">
         <Reveal>
           <div className="seclabel">pilots</div>
-          <h2>We&apos;re onboarding five pilot firms.</h2>
+          <h2>We&apos;re onboarding immigration firms.</h2>
           <p className="lead">
-            Immigration first. Client intake, document reading, and case checks
-            on your live cases, free during the pilot. Everything it builds
-            stays yours.
+            Client intake, document reading, and case checks on your live
+            cases, free during the pilot. Everything it builds stays yours.
           </p>
           <div className="hero-ctas">
             <a className="btn btn-solid" href="/contact.html">Book a pilot ↗</a>
