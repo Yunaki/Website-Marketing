@@ -17,11 +17,13 @@ export function ReviewComments() {
     let want = false;
     try {
       const params = new URLSearchParams(window.location.search);
-      if (params.get("review") === TOKEN) {
+      if (params.get("review") === "off") {
+        localStorage.removeItem("yn-review");
+      } else if (params.get("review") === TOKEN) {
         want = true;
-        sessionStorage.setItem("yn-review", TOKEN);
+        localStorage.setItem("yn-review", TOKEN);
       } else {
-        want = sessionStorage.getItem("yn-review") === TOKEN;
+        want = localStorage.getItem("yn-review") === TOKEN;
       }
     } catch {
       return;
