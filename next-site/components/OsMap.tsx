@@ -141,7 +141,7 @@ export function OsMap() {
             transition={{ duration: 0.55, delay: 0.12 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
             style={n.core ? { transform: `scale(${corePulse})`, transformOrigin: "522px 293px" } : undefined}
           >
-            <rect x={n.x} y={n.y} width={n.w} height={n.h} rx={1} />
+            <rect x={n.x} y={n.y} width={n.w} height={n.h} rx={20} />
             <text
               className={n.core ? "oscore-title" : "osnode-title"}
               x={n.x + (n.core ? 27 : 20)}

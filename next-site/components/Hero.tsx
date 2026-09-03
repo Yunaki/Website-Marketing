@@ -27,7 +27,7 @@ export function Hero() {
     >
       <motion.h1 variants={reduced ? undefined : item}>
         The operating system <span className="hl">built</span> for{" "}
-        <span className="hl">law firms</span>.
+        <span className="hl">law firms.</span>
       </motion.h1>
       <motion.p className="lead" variants={reduced ? undefined : item}>
         Yunaki runs the case from first call to filing. Intake, documents,

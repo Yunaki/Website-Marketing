@@ -1,25 +1,6 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, IBM_Plex_Mono, Inter } from "next/font/google";
 import { ReviewComments } from "@/components/ReviewComments";
 import "./globals.css";
-
-const serif = Source_Serif_4({
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-serif",
-  display: "swap",
-});
-const mono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-mono",
-  display: "swap",
-});
-const sans = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yunaki.tech"),
@@ -53,7 +34,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${serif.variable} ${mono.variable} ${sans.variable}`}>
+    <html lang="en">
       <body>
         {children}
         <ReviewComments />
