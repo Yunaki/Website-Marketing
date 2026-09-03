@@ -14,9 +14,9 @@ function Card({ x, y, w, h, icon, iconBg, iconColor, title, sub }: {
     <g>
       <rect className="hub-card" x={x} y={y} width={w} height={h} rx={26} />
       <circle cx={x + 38} cy={y + h / 2} r={16} fill={iconBg} />
-      <text x={x + 38} y={y + h / 2 + 5} textAnchor="middle" fontSize={15} fontWeight={800} fill={iconColor} fontFamily="'Work Sans', sans-serif">{icon}</text>
-      <text x={x + 66} y={y + h / 2 - 4} fontSize={17} fontWeight={700} fill={T.title} fontFamily="'Work Sans', sans-serif">{title}</text>
-      <text x={x + 66} y={y + h / 2 + 17} fontSize={11.5} fill={T.sub} fontFamily="ui-monospace, Menlo, monospace">{sub}</text>
+      <text x={x + 38} y={y + h / 2 + 5} textAnchor="middle" fontSize={15} fontWeight={800} fill={iconColor} fontFamily="'Bricolage Grotesque', sans-serif">{icon}</text>
+      <text x={x + 66} y={y + h / 2 - 4} fontSize={17} fontWeight={700} fill={T.title} fontFamily="'Bricolage Grotesque', sans-serif">{title}</text>
+      <text x={x + 66} y={y + h / 2 + 17} fontSize={10} fill={T.sub} fontFamily="'Martian Mono', ui-monospace, monospace">{sub}</text>
     </g>
   );
 }
@@ -72,8 +72,8 @@ export function CaseHub() {
           <Card x={52} y={398} w={230} h={72} icon="T" iconBg="#33406e" iconColor="#fff" title="Teams" sub="next" />
           <Card x={52} y={486} w={230} h={72} icon="+" iconBg="#e7edf5" iconColor="#4a5b73" title="Others" sub="on ask" />
           <rect className="hub-group" x={308} y={374} width={184} height={120} rx={34} />
-          <text x={400} y={428} textAnchor="middle" fontSize={17.5} fontWeight={800} fill={T.title} fontFamily="'Work Sans', sans-serif">Communication</text>
-          <text x={400} y={452} textAnchor="middle" fontSize={11} fill={T.sub} fontFamily="ui-monospace, Menlo, monospace">one place to ask</text>
+          <text x={400} y={428} textAnchor="middle" fontSize={17.5} fontWeight={800} fill={T.title} fontFamily="'Bricolage Grotesque', sans-serif">Communication</text>
+          <text x={400} y={452} textAnchor="middle" fontSize={9.5} fill={T.sub} fontFamily="'Martian Mono', ui-monospace, monospace">one place to ask</text>
           <path className="hub-dashline" d="M282,346 H296 V408 H304" markerEnd="url(#hubArrowDim)" />
           <path className="hub-dashline" d="M282,434 H304" markerEnd="url(#hubArrowDim)" />
           <path className="hub-dashline" d="M282,522 H296 V460 H304" markerEnd="url(#hubArrowDim)" />
@@ -88,13 +88,13 @@ export function CaseHub() {
           {/* the core */}
           <rect x={505} y={300} width={390} height={330} rx={36} fill="#ffffff" stroke="rgba(13,39,80,0.12)" strokeWidth="1" />
           <rect className="hub-glowrect" x={505} y={300} width={390} height={330} rx={36} fill="url(#hubGlow)" />
-          <text x={700} y={352} textAnchor="middle" fontSize={12} letterSpacing="0.22em" fill={T.lime} fontFamily="ui-monospace, Menlo, monospace">THE FIRM PORTAL</text>
-          <text x={700} y={396} textAnchor="middle" fontSize={34} fontWeight={800} fill="#081b39" fontFamily="'Work Sans', sans-serif" letterSpacing="-0.02em">One case file</text>
-          <text x={700} y={424} textAnchor="middle" fontSize={12} letterSpacing="0.14em" fill={T.sub} fontFamily="ui-monospace, Menlo, monospace">YK-2041 · I-130 · SPOUSE</text>
+          <text x={700} y={352} textAnchor="middle" fontSize={11} letterSpacing="0.1em" fill={T.lime} fontFamily="'Martian Mono', ui-monospace, monospace">THE FIRM PORTAL</text>
+          <text x={700} y={396} textAnchor="middle" fontSize={34} fontWeight={800} fill="#081b39" fontFamily="'Bricolage Grotesque', sans-serif" letterSpacing="-0.02em">One case file</text>
+          <text x={700} y={424} textAnchor="middle" fontSize={11} letterSpacing="0.06em" fill={T.sub} fontFamily="'Martian Mono', ui-monospace, monospace">YK-2041 · I-130 · SPOUSE</text>
           {stats.map(([n, l, sx, sy]) => (
             <g key={l}>
-              <text x={sx} y={sy} textAnchor="middle" fontSize={30} fontWeight={800} fill={T.lime} fontFamily="'Work Sans', sans-serif">{n}</text>
-              <text x={sx} y={sy + 22} textAnchor="middle" fontSize={10} letterSpacing="0.16em" fill={T.sub} fontFamily="ui-monospace, Menlo, monospace">{l}</text>
+              <text x={sx} y={sy} textAnchor="middle" fontSize={30} fontWeight={800} fill={T.lime} fontFamily="'Bricolage Grotesque', sans-serif">{n}</text>
+              <text x={sx} y={sy + 22} textAnchor="middle" fontSize={9} letterSpacing="0.08em" fill={T.sub} fontFamily="'Martian Mono', ui-monospace, monospace">{l}</text>
             </g>
           ))}
 
