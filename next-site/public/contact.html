@@ -20,8 +20,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script>
-/* Founder review mode: loads SimpleCommenter only with ?review (remembered per tab). */
-(function(){try{var p=new URLSearchParams(location.search);var w=p.has("review");if(w)sessionStorage.setItem("yn-review","1");else w=sessionStorage.getItem("yn-review")==="1";if(!w)return;var s=document.createElement("script");s.src="https://simplecommenter.com/js/comments.min.js?id=sc_89bdf9fee6ccd44b";s.defer=true;document.head.appendChild(s);}catch(e){}})();
+/* Founder review mode: SimpleCommenter behind ?review=<token>, SRI-pinned. */
+(function(){try{var K="yk-ed5dc935";var p=new URLSearchParams(location.search);var w=p.get("review")===K;if(w)sessionStorage.setItem("yn-review",K);else w=sessionStorage.getItem("yn-review")===K;if(!w)return;var s=document.createElement("script");s.src="https://www.simplecommenter.com/js/comments.min.js?id=sc_89bdf9fee6ccd44b";s.integrity="sha384-GTf9gnTD2n8HZfbGnQigAGG2AKOhLMqoCy1rjS6WebfSOujo+0sPhCFBckTVI3L6";s.crossOrigin="anonymous";s.defer=true;document.head.appendChild(s);}catch(e){}})();
 </script>
 </head>
 <body>
