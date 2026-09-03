@@ -1,187 +1,31 @@
-"use client";
+// Testimonials: the pilot's own people, words only. Newsreader carries the
+// quote, mono caps carry the name. (scripts/halftone.py remains in the repo
+// if dithered portraits ever return.)
 
-// Testimonials in the living-halftone style: each tile re-dithers a
-// processed photo frame in real time, so the dot field plays like quiet
-// video — a breathing zoom, a slow drift, per-dot shimmer, and a blink
-// every few seconds. Sources are AI-generated faces of people who do not
-// exist (public/portraits/stage-*.png, produced by scripts/halftone.py);
-// rerun that script on Allison's and Isaiah's real photos to replace them.
-// Reduced motion gets one still frame; offscreen tiles pause.
-import { useEffect, useRef } from "react";
+type Person = { name: string; role: string; quote: string };
 
-type Person = { name: string; role: string; quote: string; img: string; eyeY: number; video?: string };
-
-// When the founders send short clips, add video: "/portraits/<name>.mp4"
-// and the tile plays true dithered footage instead of the animated still.
 const PEOPLE: Person[] = [
-  { name: "Allison Yew", role: "Senior attorney", quote: "[ Allison's words go here ]", img: "/portraits/stage-a.png", eyeY: 0.46 },
-  { name: "Isaiah", role: "Paralegal", quote: "[ Isaiah's words go here ]", img: "/portraits/stage-b.png", eyeY: 0.44 },
+  {
+    name: "Allison Yew",
+    role: "Senior attorney",
+    quote:
+      "My clients are tech savvy, but they still email me about case status. And some don't submit their intake forms even after weeks, so I had to follow up with every one personally. With Yunaki, the most hectic part of my work is done with ease. The follow-ups and client replies happen automatically.",
+  },
+  {
+    name: "Isaiah",
+    role: "Paralegal",
+    quote:
+      "The most hectic part of my job was re-entering every client detail by hand, from intake forms into case management. We run Cerenade and MyCase. With Yunaki I finally get a one-stop solution.",
+  },
 ];
-
-const SW = 480, SH = 600;      // stage source size
-const W = 240, H = 300;        // rendered size
-const CELL = 4.5;              // grid pitch at render size (9px at stage scale)
-const INK = "#27354b";
-
-export function DitherPortrait({ src, eyeY, video }: { src: string; eyeY: number; video?: string }) {
-  const ref = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const canvas = ref.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    ctx.scale(dpr, dpr);
-
-    let lum: Uint8ClampedArray | null = null;
-    let bg = 245;
-    const img = new Image();
-    img.src = src;
-
-    // Optional true-footage path: a hidden looping video re-sampled per frame.
-    let vid: HTMLVideoElement | null = null;
-    let voff: CanvasRenderingContext2D | null = null;
-    if (video) {
-      vid = document.createElement("video");
-      vid.src = video;
-      vid.muted = true; vid.loop = true; vid.playsInline = true;
-      vid.play().catch(() => { vid = null; });
-      const c = document.createElement("canvas");
-      c.width = SW; c.height = SH;
-      voff = c.getContext("2d", { willReadFrequently: true });
-    }
-
-    const sample = (x: number, y: number) => {
-      // bilinear sample of the stage luminance, x/y in stage pixels
-      if (!lum) return 245;
-      const cx = Math.max(0, Math.min(SW - 2, x)), cy = Math.max(0, Math.min(SH - 2, y));
-      const x0 = cx | 0, y0 = cy | 0, fx = cx - x0, fy = cy - y0;
-      const i = y0 * SW + x0;
-      const a = lum[i], b = lum[i + 1], c = lum[i + SW], d = lum[i + SW + 1];
-      return a + (b - a) * fx + (c - a) * fy + (a - b - c + d) * fx * fy;
-    };
-
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let raf = 0, alive = true, visible = true, drewStill = false;
-    let blinkAt = 2600 + Math.random() * 2400;
-
-    const draw = (t: number) => {
-      // Real footage: refresh the luminance buffer from the current frame.
-      if (vid && voff && vid.readyState >= 2) {
-        voff.drawImage(vid, 0, 0, SW, SH);
-        const d = voff.getImageData(0, 0, SW, SH).data;
-        if (!lum) lum = new Uint8ClampedArray(SW * SH);
-        for (let i = 0; i < SW * SH; i++) lum[i] = d[i * 4];
-      }
-      // Articulated motion for the still: the head tilts and nods around a
-      // neck pivot while the shoulders hold, plus breathing.
-      const theta = reduced || vid ? 0 : 0.022 * Math.sin(t / 2700) + 0.009 * Math.sin(t / 950 + 1.7);
-      const nod = reduced || vid ? 0 : 4.5 * Math.sin(t / 3600 + 0.6);
-      const breathe = reduced || vid ? 0 : 2.2 * Math.sin(t / 1900);
-      const cosT = Math.cos(theta), sinT = Math.sin(theta);
-      const PXx = SW / 2, PXy = SH * 0.78;
-      // the blink: a brief dimming band over the eyes
-      let blink = 0;
-      if (!reduced) {
-        const since = t - blinkAt;
-        if (since > 0 && since < 150) blink = Math.sin((since / 150) * Math.PI);
-        if (since > 150) blinkAt = t + 2800 + Math.random() * 2600;
-      }
-      ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = INK;
-      ctx.strokeStyle = INK;
-      ctx.lineWidth = 0.8;
-      for (let gy = CELL / 2; gy < H; gy += CELL) {
-        for (let gx = CELL / 2; gx < W; gx += CELL) {
-          let sx = gx * 2, sy = gy * 2;
-          if (theta !== 0 || nod !== 0 || breathe !== 0) {
-            // weight: 1 at the crown, 0 below the neck pivot
-            const wgt = Math.max(0, Math.min(1, (PXy - sy) / (SH * 0.5)));
-            const rx = sx - PXx, ry = sy - PXy;
-            sx = PXx + (rx * cosT - ry * sinT) * (wgt) + rx * (1 - wgt);
-            sy = PXy + (rx * sinT + ry * cosT) * (wgt) + ry * (1 - wgt) + nod * wgt + breathe * (1 - wgt) * 0.4;
-          }
-          const v = sample(sx, sy) / 255;
-          let dens = 1 - v;
-          if (Math.abs(v * 255 - bg) < 26) dens *= 0.25;
-          const ex = (gx / W - 0.5) / 0.44, ey = (gy / H - 0.62) / 0.58;
-          const e = ex * ex + ey * ey;
-          if (e > 1.35) continue;
-          if (e > 0.75) dens *= Math.max(0, (1.35 - e) / 0.6);
-          dens = Math.max(0, (dens - 0.2) / 0.8) ** 1.15;
-          if (blink > 0 && Math.abs(gy / H - eyeY) < 0.035) dens *= 1 - 0.6 * blink;
-          if (dens < 0.12) continue;
-          const ph = (gx * 7 + gy * 13) * 0.11;
-          // film-grain flicker: a per-dot pseudo-random pulse per ~90ms frame
-          const fr = (t / 90) | 0;
-          const gr = (((gx * 131 + gy * 379 + fr * 997) | 0) % 17) / 17 - 0.5;
-          const s = dens * 2.2 * (reduced ? 1 : 1 + 0.09 * Math.sin(t / 480 + ph) + 0.09 * gr);
-          if (s <= 0.22) continue;
-          if (dens > 0.22 && dens < 0.42 && ((gx * 73 + gy * 19) | 0) % 7 === 0) {
-            const p = Math.max(0.8, s * 1.25);
-            ctx.beginPath();
-            ctx.moveTo(gx - p, gy); ctx.lineTo(gx + p, gy);
-            ctx.moveTo(gx, gy - p); ctx.lineTo(gx, gy + p);
-            ctx.stroke();
-          } else {
-            ctx.beginPath();
-            ctx.arc(gx, gy, s, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
-      }
-    };
-
-    // one loop, always scheduled while mounted; drawing gated inside.
-    const loop = (t: number) => {
-      if (!alive) return;
-      if (lum && visible) {
-        if (reduced) {
-          if (!drewStill) { draw(t); drewStill = true; }
-        } else {
-          draw(t);
-        }
-      }
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-
-    img.onload = () => {
-      const off = document.createElement("canvas");
-      off.width = SW; off.height = SH;
-      const octx = off.getContext("2d");
-      if (!octx) return;
-      octx.drawImage(img, 0, 0, SW, SH);
-      const data = octx.getImageData(0, 0, SW, SH).data;
-      lum = new Uint8ClampedArray(SW * SH);
-      for (let i = 0; i < SW * SH; i++) lum[i] = data[i * 4];
-      let sum = 0, n = 0;
-      for (let y = 0; y < 40; y += 8) for (const x of [0, 8, 16, 24, 32, SW - 40, SW - 32, SW - 24, SW - 16, SW - 8]) { sum += lum[y * SW + x]; n++; }
-      bg = sum / n;
-    };
-    img.onerror = () => { /* leave the tile empty rather than throw */ };
-
-    const io = new IntersectionObserver(([e]) => {
-      visible = e.isIntersecting;
-      if (vid) { if (visible) vid.play().catch(() => {}); else vid.pause(); }
-    }, { rootMargin: "120px" });
-    io.observe(canvas);
-    return () => { alive = false; cancelAnimationFrame(raf); io.disconnect(); if (vid) { vid.pause(); vid.src = ""; } };
-  }, [src, eyeY, video]);
-  return <canvas ref={ref} className="quote-canvas" style={{ width: W, height: H }} aria-hidden="true" />;
-}
 
 export function Testimonials() {
   return (
     <div className="quotes" role="list">
       {PEOPLE.map((p) => (
         <article className="quote" role="listitem" key={p.name}>
-          <div className="quote-tile"><DitherPortrait src={p.img} eyeY={p.eyeY} video={p.video} /></div>
-          <div className="quote-body">
-            <p className="quote-text">&ldquo;{p.quote}&rdquo;</p>
-            <div className="quote-attr">{p.name.toUpperCase()}, {p.role.toUpperCase()}</div>
-          </div>
+          <p className="quote-text">&ldquo;{p.quote}&rdquo;</p>
+          <div className="quote-attr">{p.name.toUpperCase()}, {p.role.toUpperCase()}</div>
         </article>
       ))}
     </div>

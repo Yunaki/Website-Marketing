@@ -660,48 +660,24 @@ footer a:hover { color: var(--ink); }
 .cwk-table th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--faint); }
 
 
-/* ---------- testimonials, the dithered band ---------- */
+/* ---------- testimonials ---------- */
 
-.quotes {
-  display: flex;
-  gap: 18px;
-  margin-top: 30px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 4px 4px 18px;
-  -webkit-overflow-scrolling: touch;
-}
+.quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 30px; }
+@media (max-width: 820px) { .quotes { grid-template-columns: 1fr; } }
 .quote {
-  flex: 0 0 min(820px, 94%);
-  scroll-snap-align: start;
-  display: grid;
-  grid-template-columns: 264px 1fr;
-  gap: 30px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
   background: rgba(255, 255, 255, 0.72);
   -webkit-backdrop-filter: blur(22px);
   backdrop-filter: blur(22px);
   border: 1px solid rgba(255, 255, 255, 0.78);
-  border-radius: 40px;
+  border-radius: 32px;
   box-shadow: var(--sh-glass);
-  padding: 24px 40px 24px 24px;
+  padding: 34px 38px;
 }
-@media (max-width: 700px) {
-  .quote { grid-template-columns: 1fr; padding: 20px; }
-}
-.quote-tile {
-  position: relative;
-  border-radius: 28px;
-  background: linear-gradient(160deg, #f4c7c0 0%, #f8e0d6 45%, var(--canvas) 100%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-  min-height: 300px;
-}
-.quote-canvas { display: block; }
-.quote-body { display: flex; flex-direction: column; gap: 22px; padding: 18px 0; }
-.quote-text { font-family: var(--body); font-size: 21px; line-height: 1.5; color: var(--ink); }
+.quote-text { font-family: var(--body); font-size: 19px; line-height: 1.6; color: var(--ink); }
 .quote-attr { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--faint); }
 
 /* ---------- the time-per-case comparison ---------- */
