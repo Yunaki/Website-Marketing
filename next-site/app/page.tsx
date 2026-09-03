@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { CaseHub } from "@/components/CaseHub";
 import { CaseWeekChart } from "@/components/CaseWeekChart";
 import { Reveal } from "@/components/Reveal";
+import { Testimonials } from "@/components/Testimonials";
 import { YunakiDesk } from "@/components/desk/YunakiDesk";
 
 const TICKER = [
@@ -118,24 +119,7 @@ export default function Home() {
           <div className="seclabel">from the pilot</div>
           <h2>The people running it.</h2>
         </Reveal>
-        <div className="quotes">
-          <Reveal className="quote">
-            <span className="quote-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <p className="quote-text">[ Allison&apos;s words go here ]</p>
-            <div className="quote-who">
-              <span className="quote-name">Allison Yew</span>
-              <span className="quote-role">Senior attorney</span>
-            </div>
-          </Reveal>
-          <Reveal delay={0.12} className="quote">
-            <span className="quote-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <p className="quote-text">[ Isaiah&apos;s words go here ]</p>
-            <div className="quote-who">
-              <span className="quote-name">Isaiah</span>
-              <span className="quote-role">Paralegal</span>
-            </div>
-          </Reveal>
-        </div>
+        <Testimonials />
       </section>
 
       <section className="cta-band" id="pilot">
