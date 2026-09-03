@@ -5,12 +5,12 @@ export default function NotFound() {
     <div className="frame">
       <Topbar />
       <div className="page-head">
-        <div className="seclabel">§ 404 · not on file</div>
+        <div className="seclabel">not on file</div>
         <h2>This page isn&apos;t in the record.</h2>
         <div className="prose">
           <p>
             The address may have changed, or it never existed. Either way, we
-            don&apos;t guess — here are the pages that do exist.
+            don&apos;t guess. Here are the pages that do exist.
           </p>
         </div>
         <div className="hero-ctas" style={{ marginTop: 28 }}>

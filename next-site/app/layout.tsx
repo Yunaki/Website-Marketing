@@ -23,9 +23,9 @@ const sans = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yunaki.tech"),
-  title: "Yunaki — the agentic OS for immigration law firms",
+  title: "Yunaki — the operating system built for law firms",
   description:
-    "Yunaki is the agentic OS for immigration law firms: it runs intake, reads the documents, checks every case, and drafts the follow-ups — so the work moves smoothly. You approve everything. Yunaki never files.",
+    "Yunaki is the operating system built for law firms: it runs intake, reads the documents, checks every case, and drafts the follow-ups — so the work moves smoothly. You approve everything. Yunaki never files.",
   alternates: { canonical: "/" },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
@@ -34,17 +34,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Yunaki",
-    title: "Yunaki — the agentic OS for immigration law firms",
+    title: "Yunaki — the operating system built for law firms",
     description:
-      "The agentic OS that never guesses your cases. Intake, document reading, case checks, and follow-ups for immigration firms. You approve everything — Yunaki never files.",
+      "The operating system built for law firms. It never guesses your cases. Intake, document reading, case checks, and follow-ups for immigration firms. You approve everything — Yunaki never files.",
     url: "https://yunaki.tech/",
     images: ["/assets/og.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yunaki — the agentic OS for immigration law firms",
+    title: "Yunaki — the operating system built for law firms",
     description:
-      "The agentic OS that never guesses your cases. You approve everything — Yunaki never files.",
+      "The operating system built for law firms. It never guesses your cases. You approve everything — Yunaki never files.",
     images: ["/assets/og.png"],
   },
 };

@@ -25,26 +25,18 @@ export function Hero() {
       initial={reduced ? undefined : "hidden"}
       animate={reduced ? undefined : "show"}
     >
-      <motion.div className="kicker" variants={reduced ? undefined : item}>
-        <span>DWG.001 · THE AGENTIC OS FOR LAW FIRMS</span>
-        <span>|</span>
-        <span className="live">
-          <span className="dot"></span> PILOTS OPEN
-        </span>
-      </motion.div>
       <motion.h1 variants={reduced ? undefined : item}>
-        The agentic OS that <span className="hl">never</span>{" "}
-        <span className="hl">guesses</span> your cases.
+        The operating system <span className="hl">built</span> for{" "}
+        <span className="hl">law firms</span>.
       </motion.h1>
       <motion.p className="lead" variants={reduced ? undefined : item}>
-        One OS runs the case — intake, documents, checks, follow-ups — from
-        first call to filing.{" "}
-        <strong>Facts come from a deterministic engine.</strong> AI drafts. You
-        decide. Your attorneys file.
+        Yunaki runs the case from first call to filing. Intake, documents,
+        checks, follow-ups. <strong>Facts come from a deterministic
+        engine.</strong> AI drafts. You decide. Your attorneys file.
       </motion.p>
       <motion.div className="hero-ctas" variants={reduced ? undefined : item}>
-        <a className="btn btn-solid" href="/case-files.html">
-          See the case files →
+        <a className="btn btn-solid" href="/contact.html">
+          Book a pilot
         </a>
         <a className="btn" href="/how-it-works.html">
           How it works

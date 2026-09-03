@@ -2,7 +2,7 @@ export function Topbar() {
   return (
     <header className="topbar">
       <a className="brand" href="/">
-        YUNAKI <span>/ the agentic OS for law firms</span>
+        YUNAKI <span>/ the operating system for law firms</span>
       </a>
       <nav className="topnav">
         <a href="/how-it-works.html">How it works</a>
@@ -21,7 +21,7 @@ export function Footer() {
   return (
     <footer>
       <div className="fcol">
-        <strong>YUNAKI</strong> · © 2026 · built by two founders
+        <strong>YUNAKI</strong> · © 2026
       </div>
       <div className="fcol">your cases · your rules · your memory</div>
       <div className="fcol">

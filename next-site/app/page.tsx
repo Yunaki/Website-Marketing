@@ -2,7 +2,6 @@ import { Topbar, Footer } from "@/components/Topbar";
 import { Hero } from "@/components/Hero";
 import { OsMap } from "@/components/OsMap";
 import { Reveal } from "@/components/Reveal";
-import { StatNum } from "@/components/StatNum";
 import { YunakiDesk } from "@/components/desk/YunakiDesk";
 
 const TICKER = [
@@ -19,19 +18,19 @@ const TICKER = [
 
 const TODAY = [
   { title: "Client intake", text: "Clients answer and upload through one secure link. No email ping-pong." },
-  { title: "Document reading", text: "Passports, green cards, I-94s — read field by field. Unreadable stays blank, never made up." },
-  { title: "The case check", text: "One click: is this case complete? Conflicts flagged, follow-ups already written." },
-  { title: "USCIS requirements", text: "30 visa types: forms, editions, documents, where to file. Verified and dated." },
-  { title: "Slack assistant", text: "“What's the status on the Patel case?” Ask @yunaki, get it from the file." },
+  { title: "Document reading", text: "Passports, green cards, and I-94s are read field by field. Anything unreadable stays blank." },
+  { title: "The case check", text: "One click answers whether the case is complete. Conflicts are flagged and the follow-ups come already written." },
+  { title: "USCIS requirements", text: "Forms, editions, documents, and where to file, for 30 visa types. Verified and dated." },
+  { title: "Slack assistant", text: "Ask about any case and the answer comes from the file. Approvals happen right in the thread." },
   { title: "You approve every email", text: "Yunaki writes. You send. Always. Everything on the record." },
 ];
 
 const PRACTICES = [
-  { title: "Immigration", chip: "Pilots open", live: true, text: <><strong>Live today:</strong> intake, document reading, and case checks across 30 visa types. I-130 denials jumped 28.4% → 41.6% in FY 2025 — checking beats redoing.</> },
+  { title: "Immigration", chip: "Pilots open", live: true, text: <><strong>Live today:</strong> intake, document reading, and case checks across 30 visa types. I-130 denials jumped 28.4% to 41.6% in FY 2025. Checking beats redoing.</> },
   { title: "SSDI / SSI Disability", chip: "In development", text: <><strong>64% of ~2M annual claims are denied initially.</strong> 65% of those are preventable.</> },
-  { title: "Bankruptcy", chip: "Roadmap", text: <><strong>48% of Chapter 13 cases get dismissed</strong> — often on pure arithmetic.</> },
+  { title: "Bankruptcy", chip: "Roadmap", text: <><strong>48% of Chapter 13 cases get dismissed</strong>, often on pure arithmetic.</> },
   { title: "Workers Compensation", chip: "Roadmap", text: <><strong>40% of initial claims contain errors.</strong> No dedicated tool exists.</> },
-  { title: "Personal Injury / MVA", chip: "Roadmap", text: <><strong>Every fact in the demand package</strong> — dates, bills, chronologies — verified.</> },
+  { title: "Personal Injury / MVA", chip: "Roadmap", text: <><strong>Every fact in the demand package</strong> verified. Dates, bills, chronologies.</> },
   { title: "Healthcare Claims", chip: "Roadmap", text: <><strong>$262B in claims denied annually.</strong> 85% preventable.</> },
 ];
 
@@ -50,11 +49,6 @@ export default function Home() {
       <section className="sec-pad" id="watch" style={{ paddingTop: 0 }}>
         <figure className="fig" style={{ marginTop: 24 }}>
           <YunakiDesk />
-          <figcaption className="fig-cap">
-            <strong>Fig. 0 · The Desk.</strong> One I-130 case across Slack, the
-            workspace, the client&apos;s phone, and Gmail. Every send approved by
-            a human. Filed by the attorney.
-          </figcaption>
         </figure>
       </section>
 
@@ -66,52 +60,20 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="split" id="problem">
-        <Reveal>
-          <div className="seclabel">§01 · the problem</div>
-          <h2>Legal paperwork fails at industrial scale.</h2>
-          <div className="prose">
-            <ul className="list">
-              <li>The same client data is retyped into 5 to 15 forms. No tool checks that it matches.</li>
-              <li>When an attorney leaves, the knowledge of what worked leaves too.</li>
-              <li>Most errors are deterministic: wrong edition, bad math, mismatched dates.</li>
-            </ul>
-          </div>
-        </Reveal>
-        <Reveal delay={0.15}>
-          <div className="statrow">
-            <StatNum value={64} unit="%" label="SSDI claims denied at initial level (FY 2025)" />
-            <StatNum value={48} unit="%" label="Chapter 13 filings dismissed outright" />
-            <div className="stat">
-              <div className="num">$3-8<span className="unit">K</span></div>
-              <div className="lbl">attorney cost of one immigration RFE</div>
-            </div>
-          </div>
-          <p className="stat-note">
-            sources: SSA.gov FY2025 · US courts 2025 · AILA / USCIS.{" "}
-            <strong>most of it is preventable.</strong>
-          </p>
-        </Reveal>
-      </section>
-
       <section className="sec-pad" id="how">
         <Reveal>
-          <div className="seclabel">§02 · the system</div>
+          <div className="seclabel">the workflow</div>
           <h2>One OS. Everything connected.</h2>
           <div className="prose">
-            <p>Tap any part — or just watch a case move.</p>
+            <p>The same loop the film above shows, wire by wire.</p>
           </div>
         </Reveal>
         <OsMap />
-        <div className="after-fig-cta">
-          <a className="btn btn-solid" href="/case-files.html">See the case files →</a>
-          <a className="btn" href="/how-it-works.html">Read the full architecture</a>
-        </div>
       </section>
 
       <section className="sec-pad" id="today">
         <Reveal>
-          <div className="seclabel">§03 · in the product today</div>
+          <div className="seclabel">in the product today</div>
           <h2>What pilot firms are working with now.</h2>
           <div className="prose">
             <p>Not a roadmap. These run on live immigration cases during the pilot.</p>
@@ -128,15 +90,16 @@ export default function Home() {
             </Reveal>
           ))}
           <div className="practice-foot">
-            the rule: <strong>Yunaki can read, check, and draft — it can never send, sign, or file.</strong>{" "}
-            <a href="/security.html">read the guardrails →</a>
+            One rule holds everywhere. <strong>Yunaki can read, check, and
+            draft. It can never send, sign, or file.</strong>{" "}
+            <a href="/security.html">Read the guardrails</a>
           </div>
         </div>
       </section>
 
       <section className="sec-pad" id="practices">
         <Reveal>
-          <div className="seclabel">§04 · practice areas</div>
+          <div className="seclabel">practice areas</div>
           <h2>One OS. Every paperwork-heavy practice.</h2>
           <div className="prose">
             <p>Same failure pattern everywhere: high-volume forms, deterministic rules, brutal penalties for small errors.</p>
@@ -153,7 +116,7 @@ export default function Home() {
             </Reveal>
           ))}
           <div className="practice-foot">
-            one OS: <strong>deterministic checks + firm memory.</strong> a new
+            one OS. <strong>deterministic checks + firm memory.</strong> a new
             practice area is a playbook away, not a new product.
           </div>
         </div>
@@ -161,7 +124,7 @@ export default function Home() {
 
       <section className="sec-pad" id="proof">
         <Reveal>
-          <div className="seclabel">§05 · proof</div>
+          <div className="seclabel">proof</div>
           <h2>Case files, not testimonials.</h2>
           <div className="prose">
             <p>No invented clients. Every number is public and sourced.</p>
@@ -186,11 +149,11 @@ export default function Home() {
 
       <section className="cta-band" id="pilot">
         <Reveal>
-          <div className="seclabel">§06 · pilots</div>
+          <div className="seclabel">pilots</div>
           <h2>We&apos;re onboarding five pilot firms.</h2>
           <p className="lead">
             Immigration first. Client intake, document reading, and case checks
-            on your live cases — free during the pilot. Everything it builds
+            on your live cases, free during the pilot. Everything it builds
             stays yours.
           </p>
           <div className="hero-ctas">
