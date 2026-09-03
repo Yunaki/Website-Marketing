@@ -1,14 +1,16 @@
 "use client";
 
-// "70% less time per case." Two bars, one number. The comparison the
-// founders asked for: staff hours on a case with and without Yunaki,
-// drawn from the pilot case the film above tells.
+// "70% less time." A donut, per founder review: the lime sweep is the time
+// Yunaki takes off a case, the blue remainder is what your team still
+// spends. Numbers ride the legend so nothing depends on color alone.
 import { useEffect, useRef, useState } from "react";
 import { useInView, useReducedMotion, animate } from "motion/react";
 
 const WITHOUT = 10;
 const WITH = 3;
 const SAVING = Math.round((1 - WITH / WITHOUT) * 100);
+const R = 84;
+const CIRC = 2 * Math.PI * R;
 
 function CountUp({ to, on, suffix }: { to: number; on: boolean; suffix?: string }) {
   const reduced = useReducedMotion();
@@ -27,35 +29,35 @@ export function CaseWeekChart() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const reduced = useReducedMotion();
   const grown = reduced || inView;
+  const sweep = (SAVING / 100) * CIRC;
 
   return (
     <div className="cwk" ref={ref}>
-      <div className="cwk-head">
-        <div>
+      <div className="cwk-donutwrap" role="img"
+        aria-label={`Donut chart. Without Yunaki a case takes about ${WITHOUT} staff hours. With Yunaki about ${WITH}. ${SAVING} percent less of your team's time.`}>
+        <div className="cwk-donut">
+          <svg viewBox="0 0 220 220" aria-hidden="true">
+            <circle cx="110" cy="110" r={R} fill="none" stroke="#5f8fd6" strokeWidth="26" />
+            <circle
+              cx="110" cy="110" r={R} fill="none" stroke="#7fa32a" strokeWidth="26"
+              strokeLinecap="round"
+              strokeDasharray={`${CIRC}`}
+              strokeDashoffset={grown ? CIRC - sweep : CIRC}
+              transform="rotate(-90 110 110)"
+              style={{ transition: reduced ? "none" : "stroke-dashoffset 1.4s cubic-bezier(0.22, 1, 0.36, 1)" }}
+            />
+          </svg>
+          <div className="cwk-center">
+            <span className="cwk-centernum"><CountUp to={SAVING} on={inView} suffix="%" /></span>
+            <span className="cwk-centerword">less time</span>
+          </div>
+        </div>
+        <div className="cwk-side">
           <div className="cwk-title">Your team&apos;s hours, per case</div>
-          <div className="cwk-sub">the pilot case above, timed</div>
-        </div>
-        <div className="cwk-big" aria-hidden="true">
-          <CountUp to={SAVING} on={inView} suffix="%" />
-          <span className="cwk-bigword">less time</span>
-        </div>
-      </div>
-
-      <div className="cwk-compare" role="img"
-        aria-label={`Bar comparison. Without Yunaki, about ${WITHOUT} staff hours per case. With Yunaki, about ${WITH}. ${SAVING} percent less time.`}>
-        <div className="cwk-row">
-          <span className="cwk-rowlabel">Without Yunaki</span>
-          <div className="cwk-track">
-            <div className="cwk-fill cwk-team" style={{ width: grown ? "100%" : "2%" }} />
+          <div className="cwk-keys">
+            <span><span className="cwk-swatch cwk-team"></span>Without Yunaki, {WITHOUT} hrs</span>
+            <span><span className="cwk-swatch cwk-os"></span>With Yunaki, {WITH} hrs</span>
           </div>
-          <span className="cwk-rowval">{WITHOUT} hrs</span>
-        </div>
-        <div className="cwk-row">
-          <span className="cwk-rowlabel">With Yunaki</span>
-          <div className="cwk-track">
-            <div className="cwk-fill cwk-os" style={{ width: grown ? `${(WITH / WITHOUT) * 100}%` : "2%", transitionDelay: "0.25s" }} />
-          </div>
-          <span className="cwk-rowval">{WITH} hrs</span>
         </div>
       </div>
     </div>

@@ -120,6 +120,7 @@ export default function Home() {
         </Reveal>
         <div className="quotes">
           <Reveal className="quote">
+            <span className="quote-dots" aria-hidden="true"><i></i><i></i><i></i></span>
             <p className="quote-text">[ Allison&apos;s words go here ]</p>
             <div className="quote-who">
               <span className="quote-name">Allison Yew</span>
@@ -127,6 +128,7 @@ export default function Home() {
             </div>
           </Reveal>
           <Reveal delay={0.12} className="quote">
+            <span className="quote-dots" aria-hidden="true"><i></i><i></i><i></i></span>
             <p className="quote-text">[ Isaiah&apos;s words go here ]</p>
             <div className="quote-who">
               <span className="quote-name">Isaiah</span>

@@ -50,56 +50,38 @@
     <div class="seclabel">the core rule</div>
     <h2>Facts never come from a language model.</h2>
     <div class="prose">
-      <p>
-        Poverty guidelines are a table. A means test is arithmetic. A form
-        edition is a version string. A rules engine gets these wrong 0% of
-        the time, by construction.
-      </p>
+      <p>Facts are checkable. Yunaki checks them the same way, every time.</p>
     </div>
 
     <figure class="fig">
-      <div class="fig-body">
-        <svg viewBox="0 0 1000 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the two-layer architecture: a deterministic layer computes all facts, a generative layer drafts prose only, and both feed a reviewed filing.">
+      <div class="hub-scroll">
+        <svg class="hub" viewBox="0 0 900 380" role="img" aria-label="The deterministic engine and the AI drafts both feed the case file. Facts come only from the engine.">
           <defs>
-            <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#152a43"/>
+            <radialGradient id="fig2Glow" cx="50%" cy="46%" r="60%">
+              <stop offset="0%" stop-color="#b6d552" stop-opacity="0.5"/>
+              <stop offset="55%" stop-color="#b6d552" stop-opacity="0.16"/>
+              <stop offset="100%" stop-color="#b6d552" stop-opacity="0"/>
+            </radialGradient>
+            <marker id="fig2Arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#7fa32a"/>
             </marker>
           </defs>
-
-          <!-- generative layer (top) -->
-          <rect x="40" y="40" width="560" height="100" fill="#fbfaf6" stroke="#152a43" stroke-width="2" stroke-dasharray="6 5"/>
-          <text x="64" y="76" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="700" fill="#152a43">Generative layer · drafts only</text>
-          <text x="64" y="102" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">cover letters · narratives · summaries</text>
-          <text x="64" y="122" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">always attorney-reviewed · never trusted with a fact</text>
-
-          <!-- boundary -->
-          <line x1="40" y1="180" x2="600" y2="180" stroke="#96772e" stroke-width="4"/>
-          <text x="64" y="205" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="700" fill="#96772e">THE BOUNDARY · the model reads facts. it never writes them.</text>
-
-          <!-- deterministic layer (bottom) -->
-          <rect x="40" y="224" width="560" height="100" fill="#fbfaf6" stroke="#152a43" stroke-width="2"/>
-          <text x="64" y="260" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="700" fill="#152a43">Deterministic layer · every fact</text>
-          <text x="64" y="286" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">fees · form editions · deadlines · guidelines · means tests</text>
-          <text x="64" y="306" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">cross-field math · date logic · completeness checks</text>
-
-          <!-- flows into output -->
-          <path d="M 600 274 L 700 274 L 700 182" fill="none" stroke="#152a43" stroke-width="2"/>
-          <path d="M 600 90 L 700 90 L 700 178" fill="none" stroke="#152a43" stroke-width="2"/>
-
-          <!-- output box -->
-          <rect x="736" y="132" width="224" height="100" fill="#fbfaf6" stroke="#96772e" stroke-width="2"/>
-          <text x="848" y="166" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="700" fill="#96772e">The case file</text>
-          <text x="848" y="190" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">facts: computed + checked</text>
-          <text x="848" y="208" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">prose: drafted + reviewed</text>
-          <text x="848" y="226" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#5c6675">filed by your attorney</text>
-          <line x1="700" y1="182" x2="732" y2="182" stroke="#152a43" stroke-width="2" marker-end="url(#arr2)"/>
+          <path class="hub-flow" d="M368,109 Q470,120 528,152" marker-end="url(#fig2Arrow)"/>
+          <path class="hub-flow" d="M330,271 Q440,262 528,228" marker-end="url(#fig2Arrow)"/>
+          <rect class="hub-card" x="40" y="80" width="328" height="58" rx="29"/>
+          <circle cx="69" cy="109" r="14" fill="#e7edf5"/>
+          <text x="69" y="113.5" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0d2750" font-family="'Bricolage Grotesque', sans-serif">D</text>
+          <text x="92" y="115" font-size="16.5" font-weight="700" fill="#081b39" font-family="'Bricolage Grotesque', sans-serif">Deterministic engine</text>
+          <rect class="hub-card" x="40" y="242" width="290" height="58" rx="29"/>
+          <circle cx="69" cy="271" r="14" fill="#e7edf5"/>
+          <text x="69" y="275.5" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0d2750" font-family="'Bricolage Grotesque', sans-serif">AI</text>
+          <text x="92" y="277" font-size="16.5" font-weight="700" fill="#081b39" font-family="'Bricolage Grotesque', sans-serif">Drafts only</text>
+          <circle cx="660" cy="190" r="120" fill="#ffffff" stroke="rgba(13,39,80,0.12)"/>
+          <circle class="hub-glowrect" cx="660" cy="190" r="120" fill="url(#fig2Glow)"/>
+          <text x="660" y="182" text-anchor="middle" font-size="12" letter-spacing="0.12em" fill="#7fa32a" font-family="'Martian Mono', ui-monospace, monospace">THE CASE FILE</text>
+          <text x="660" y="212" text-anchor="middle" font-size="22" font-weight="800" fill="#081b39" font-family="'Bricolage Grotesque', sans-serif">Facts, computed</text>
         </svg>
       </div>
-      <figcaption class="fig-cap">
-        <strong>Fig. 2 · Two layers, one hard boundary.</strong> The deterministic
-        layer computes every fact. The generative layer drafts prose around them.
-        Always reviewed.
-      </figcaption>
     </figure>
 
     <div class="duo">

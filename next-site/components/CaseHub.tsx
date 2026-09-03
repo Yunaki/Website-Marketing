@@ -1,8 +1,10 @@
 "use client";
 
-// The case hub, round two per founder review: a circular firm-portal core
-// with its stats, satellites orbiting it with official marks and no
-// sublines, clean curved lime connectors, no dotted frames.
+// The case hub, round three per founder review. Communication is its own
+// cluster: Slack, Teams, Gmail and the rest feed it, and it alone talks to
+// the firm portal. The portal fans out to case management, validation,
+// e-filing, follow-ups and the intake form, and the intake form hands off
+// to the client portal. Pills carry a mark and a name, nothing else.
 
 const T = { title: "#081b39", sub: "#4a5b73", lime: "#7fa32a" };
 
@@ -39,49 +41,73 @@ function TeamsMark({ s = 22 }: { s?: number }) {
   );
 }
 
-type Sat = {
-  id: string; x: number; y: number; w: number;
-  title: string; mark?: "slack" | "gmail" | "teams"; mono?: string; monoBg?: string; monoColor?: string;
-  out?: boolean;
+const CX = 660, CY = 400, R = 160;
+const H = 56;
+
+type Pill = {
+  id: string; x: number; y: number; w: number; title: string;
+  mark?: "slack" | "gmail" | "teams"; mono?: string; monoBg?: string; monoColor?: string;
 };
 
-const R = 175;
-const CX = 580, CY = 385;
-const H = 58;
-
-const SATS: Sat[] = [
-  { id: "intake", x: 470, y: 42, w: 200, title: "Intake form", mono: "I", monoBg: "#b6d552", monoColor: "#16210c" },
-  { id: "slack", x: 128, y: 150, w: 160, title: "Slack", mark: "slack" },
-  { id: "teams", x: 76, y: 328, w: 168, title: "Teams", mark: "teams" },
-  { id: "others", x: 128, y: 506, w: 168, title: "Others", mono: "+", monoBg: "#e7edf5", monoColor: "#4a5b73" },
-  { id: "cm", x: 300, y: 650, w: 236, title: "Case management", mono: "CM", monoBg: "#e7edf5", monoColor: "#0d2750" },
-  { id: "gmail", x: 872, y: 150, w: 160, title: "Gmail", mark: "gmail" },
-  { id: "follow", x: 916, y: 360, w: 190, title: "Follow-ups", mono: "F", monoBg: "#e7edf5", monoColor: "#0d2750", out: true },
-  { id: "efile", x: 850, y: 560, w: 160, title: "E-filing", mono: "E", monoBg: "#e7edf5", monoColor: "#0d2750", out: true },
-  { id: "validation", x: 596, y: 660, w: 180, title: "Validation", mono: "V", monoBg: "#e7edf5", monoColor: "#0d2750", out: true },
+// Communication cluster, left.
+const COMM = { x: 268, y: 372, w: 224, h: H };
+const FEEDS: Pill[] = [
+  { id: "slack", x: 40, y: 196, w: 150, title: "Slack", mark: "slack" },
+  { id: "teams", x: 28, y: 288, w: 156, title: "Teams", mark: "teams" },
+  { id: "gmail", x: 28, y: 428, w: 150, title: "Gmail", mark: "gmail" },
+  { id: "others", x: 40, y: 520, w: 150, title: "Others", mono: "+", monoBg: "#e7edf5", monoColor: "#4a5b73" },
+];
+// The portal's own limbs.
+const LIMBS: Pill[] = [
+  { id: "intake", x: 600, y: 56, w: 196, title: "Intake form", mono: "I", monoBg: "#b6d552", monoColor: "#16210c" },
+  { id: "portal", x: 892, y: 56, w: 200, title: "Client portal", mono: "C", monoBg: "#b6d552", monoColor: "#16210c" },
+  { id: "cm", x: 924, y: 300, w: 232, title: "Case management", mono: "CM", monoBg: "#e7edf5", monoColor: "#0d2750" },
+  { id: "validation", x: 940, y: 500, w: 176, title: "Validation", mono: "V", monoBg: "#e7edf5", monoColor: "#0d2750" },
+  { id: "efile", x: 680, y: 664, w: 154, title: "E-filing", mono: "E", monoBg: "#e7edf5", monoColor: "#0d2750" },
+  { id: "follow", x: 380, y: 620, w: 186, title: "Follow-ups", mono: "F", monoBg: "#e7edf5", monoColor: "#0d2750" },
 ];
 
-function edgePoint(sx: number, sy: number) {
-  const dx = CX - sx, dy = CY - sy;
+function rim(px: number, py: number) {
+  const dx = CX - px, dy = CY - py;
   const d = Math.hypot(dx, dy);
   return [CX - (dx / d) * (R + 6), CY - (dy / d) * (R + 6)];
 }
 
+function PillCard({ n }: { n: Pill }) {
+  return (
+    <g>
+      <rect className="hub-card" x={n.x} y={n.y} width={n.w} height={H} rx={H / 2} />
+      {n.mark === "slack" && <g transform={`translate(${n.x + 17} ${n.y + 18})`}><SlackMark s={20} /></g>}
+      {n.mark === "gmail" && <g transform={`translate(${n.x + 16} ${n.y + 20})`}><GmailMark s={22} /></g>}
+      {n.mark === "teams" && <g transform={`translate(${n.x + 15} ${n.y + 16})`}><TeamsMark s={23} /></g>}
+      {n.mono && (
+        <>
+          <circle cx={n.x + 28} cy={n.y + H / 2} r={14} fill={n.monoBg} />
+          <text x={n.x + 28} y={n.y + H / 2 + 4.5} textAnchor="middle" fontSize={12.5} fontWeight={800} fill={n.monoColor} fontFamily="'Bricolage Grotesque', sans-serif">{n.mono}</text>
+        </>
+      )}
+      <text x={n.x + 50} y={n.y + H / 2 + 6} fontSize={16.5} fontWeight={700} fill={T.title} fontFamily="'Bricolage Grotesque', sans-serif">{n.title}</text>
+    </g>
+  );
+}
+
 export function CaseHub() {
   const stats: [string, string, number, number][] = [
-    ["9", "DOCUMENTS", 512, 385],
-    ["14", "FIELDS READ", 650, 385],
-    ["3", "ISSUES CAUGHT", 512, 455],
-    ["1", "APPROVAL", 650, 455],
+    ["9", "DOCUMENTS", 594, 396],
+    ["14", "FIELDS READ", 728, 396],
+    ["3", "ISSUES CAUGHT", 594, 466],
+    ["1", "APPROVAL", 728, 466],
   ];
+  const commRight: [number, number] = [COMM.x + COMM.w, COMM.y + COMM.h / 2];
+  const commRim = rim(commRight[0], commRight[1]);
   return (
     <div className="hub-wrap">
       <div className="hub-scroll">
         <svg
           className="hub"
-          viewBox="0 0 1160 740"
+          viewBox="0 0 1160 760"
           role="img"
-          aria-label="The firm portal at the center, as a circle. Intake, Slack, Teams, other channels, Gmail and case management flow in; follow-ups, e-filing and validation flow out."
+          aria-label="Slack, Teams, Gmail and other channels feed one Communication point, which talks to the firm portal. The portal drives the intake form, which reaches the client portal, plus case management, validation, e-filing and follow-ups."
         >
           <defs>
             <radialGradient id="hubGlow" cx="50%" cy="46%" r="60%">
@@ -94,48 +120,49 @@ export function CaseHub() {
             </marker>
           </defs>
 
-          {/* connectors: gentle curves between each satellite and the rim */}
-          {SATS.map((n) => {
+          {/* channels into Communication */}
+          {FEEDS.map((n) => {
+            const sx = n.x + n.w, sy = n.y + H / 2;
+            const tx = COMM.x - 4, ty = COMM.y + COMM.h / 2 + (sy < COMM.y ? -12 : sy > COMM.y + COMM.h ? 12 : 0);
+            const mx = (sx + tx) / 2, my = (sy + ty) / 2;
+            return <path key={n.id} className="hub-flow" d={`M${sx},${sy} Q${mx + 10},${sy} ${mx},${my} T${tx},${ty}`} markerEnd="url(#hubArrow)" />;
+          })}
+
+          {/* Communication into the portal */}
+          <path className="hub-flow" d={`M${commRight[0]},${commRight[1]} L${commRim[0]},${commRim[1]}`} markerEnd="url(#hubArrow)" />
+
+          {/* the portal's limbs */}
+          {LIMBS.filter((n) => n.id !== "portal").map((n) => {
             const cyS = n.y + H / 2;
             const nearMid = Math.abs(cyS - CY) < 90;
-            const useX = nearMid ? (n.x + n.w / 2 < CX ? n.x + n.w : n.x) : n.x + n.w / 2;
-            const useY = nearMid ? cyS : cyS < CY ? n.y + H : n.y;
-            const [ex, ey] = edgePoint(useX, useY);
-            const mx = (useX + ex) / 2 + (useY < CY ? 12 : -12);
-            const my = (useY + ey) / 2 + (useX < CX ? -10 : 10);
-            const d = n.out
-              ? `M${ex},${ey} Q${mx},${my} ${useX},${useY}`
-              : `M${useX},${useY} Q${mx},${my} ${ex},${ey}`;
-            return <path key={n.id} className="hub-flow" d={d} markerEnd="url(#hubArrow)" />;
+            const px = nearMid ? n.x : n.x + n.w / 2;
+            const py = nearMid ? cyS : cyS < CY ? n.y + H : n.y;
+            const [ex, ey] = rim(px, py);
+            const mx = (px + ex) / 2 + (py < CY ? -12 : 12);
+            const my = (py + ey) / 2 + (px < CX ? 10 : -10);
+            return <path key={n.id} className="hub-flow" d={`M${ex},${ey} Q${mx},${my} ${px},${py}`} markerEnd="url(#hubArrow)" />;
           })}
+
+          {/* intake form hands off to the client portal */}
+          <path className="hub-flow" d={`M${600 + 196},${56 + H / 2} H${892 - 6}`} markerEnd="url(#hubArrow)" />
+
+          {/* Communication node */}
+          <rect className="hub-card" x={COMM.x} y={COMM.y} width={COMM.w} height={COMM.h} rx={COMM.h / 2} />
+          <text x={COMM.x + COMM.w / 2} y={COMM.y + COMM.h / 2 + 6} textAnchor="middle" fontSize={17} fontWeight={700} fill={T.title} fontFamily="'Bricolage Grotesque', sans-serif">Communication</text>
 
           {/* the core */}
           <circle cx={CX} cy={CY} r={R} fill="#ffffff" stroke="rgba(13,39,80,0.12)" strokeWidth="1" />
           <circle className="hub-glowrect" cx={CX} cy={CY} r={R} fill="url(#hubGlow)" />
-          <text x={CX} y={296} textAnchor="middle" fontSize={12} letterSpacing="0.12em" fill={T.lime} fontFamily="'Martian Mono', ui-monospace, monospace">THE FIRM PORTAL</text>
+          <text x={CX} y={314} textAnchor="middle" fontSize={12} letterSpacing="0.12em" fill={T.lime} fontFamily="'Martian Mono', ui-monospace, monospace">THE FIRM PORTAL</text>
           {stats.map(([n, l, sx, sy]) => (
             <g key={l}>
-              <text x={sx} y={sy} textAnchor="middle" fontSize={34} fontWeight={800} fill={T.title} fontFamily="'Bricolage Grotesque', sans-serif">{n}</text>
-              <text x={sx} y={sy + 24} textAnchor="middle" fontSize={9} letterSpacing="0.08em" fill={T.sub} fontFamily="'Martian Mono', ui-monospace, monospace">{l}</text>
+              <text x={sx} y={sy} textAnchor="middle" fontSize={32} fontWeight={800} fill={T.title} fontFamily="'Bricolage Grotesque', sans-serif">{n}</text>
+              <text x={sx} y={sy + 23} textAnchor="middle" fontSize={9} letterSpacing="0.08em" fill={T.sub} fontFamily="'Martian Mono', ui-monospace, monospace">{l}</text>
             </g>
           ))}
 
-          {/* satellites: a mark and a name, nothing else */}
-          {SATS.map((n) => (
-            <g key={n.id}>
-              <rect className="hub-card" x={n.x} y={n.y} width={n.w} height={H} rx={H / 2} />
-              {n.mark === "slack" && <g transform={`translate(${n.x + 18} ${n.y + 19})`}><SlackMark s={20} /></g>}
-              {n.mark === "gmail" && <g transform={`translate(${n.x + 17} ${n.y + 21})`}><GmailMark s={22} /></g>}
-              {n.mark === "teams" && <g transform={`translate(${n.x + 16} ${n.y + 17})`}><TeamsMark s={23} /></g>}
-              {n.mono && (
-                <>
-                  <circle cx={n.x + 29} cy={n.y + H / 2} r={15} fill={n.monoBg} />
-                  <text x={n.x + 29} y={n.y + H / 2 + 4.5} textAnchor="middle" fontSize={13} fontWeight={800} fill={n.monoColor} fontFamily="'Bricolage Grotesque', sans-serif">{n.mono}</text>
-                </>
-              )}
-              <text x={n.x + 52} y={n.y + H / 2 + 6} fontSize={17} fontWeight={700} fill={T.title} fontFamily="'Bricolage Grotesque', sans-serif">{n.title}</text>
-            </g>
-          ))}
+          {FEEDS.map((n) => <PillCard key={n.id} n={n} />)}
+          {LIMBS.map((n) => <PillCard key={n.id} n={n} />)}
         </svg>
       </div>
     </div>
