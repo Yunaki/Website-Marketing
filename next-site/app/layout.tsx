@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://yunaki.tech"),
   title: "Yunaki — the operating system built for law firms",
   description:
-    "Yunaki is the operating system built for law firms: it runs intake, reads the documents, checks every case, and drafts the follow-ups — so the work moves smoothly. You approve everything. Yunaki never files.",
+    "Yunaki is the operating system built for law firms. Intake collected, documents read, mistakes caught, clients chased, forms filled. Your team just practices law.",
   alternates: { canonical: "/" },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: "Yunaki",
     title: "Yunaki — the operating system built for law firms",
     description:
-      "The operating system built for law firms. It never guesses your cases. Intake, document reading, case checks, and follow-ups for immigration firms. You approve everything — Yunaki never files.",
+      "The operating system built for law firms. Intake, documents, checks, follow-ups and forms, handled. Your team just practices law.",
     url: "https://yunaki.tech/",
     images: ["/assets/og.png"],
   },
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Yunaki — the operating system built for law firms",
     description:
-      "The operating system built for law firms. It never guesses your cases. You approve everything — Yunaki never files.",
+      "The operating system built for law firms. Your team just practices law.",
     images: ["/assets/og.png"],
   },
 };

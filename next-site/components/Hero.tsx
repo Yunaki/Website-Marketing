@@ -30,9 +30,9 @@ export function Hero() {
         <span className="hl">law firms.</span>
       </motion.h1>
       <motion.p className="lead" variants={reduced ? undefined : item}>
-        Yunaki runs the case from first call to filing. Intake, documents,
-        checks, follow-ups. <strong>Facts come from a deterministic
-        engine.</strong> AI drafts. You decide. Your attorneys file.
+        Yunaki runs the case start to finish. Intake collected, documents read,
+        mistakes caught, clients chased, forms filled.{" "}
+        <strong>Your team just practices law.</strong>
       </motion.p>
       <motion.div className="hero-ctas" variants={reduced ? undefined : item}>
         <a className="btn btn-solid" href="/contact.html">

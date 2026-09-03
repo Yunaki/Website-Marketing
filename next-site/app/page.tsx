@@ -1,6 +1,7 @@
 import { Topbar, Footer } from "@/components/Topbar";
 import { Hero } from "@/components/Hero";
-import { OsMap } from "@/components/OsMap";
+import { CaseHub } from "@/components/CaseHub";
+import { CaseWeekChart } from "@/components/CaseWeekChart";
 import { Reveal } from "@/components/Reveal";
 import { YunakiDesk } from "@/components/desk/YunakiDesk";
 
@@ -17,12 +18,12 @@ const TICKER = [
 ];
 
 const TODAY = [
-  { title: "Client intake", text: "Clients answer and upload through one secure link. No email ping-pong." },
-  { title: "Document reading", text: "Passports, green cards, and I-94s are read field by field. Anything unreadable stays blank." },
-  { title: "The case check", text: "One click answers whether the case is complete. Conflicts are flagged and the follow-ups come already written." },
-  { title: "USCIS requirements", text: "Forms, editions, documents, and where to file, for 30 visa types. Verified and dated." },
-  { title: "Slack assistant", text: "Ask about any case and the answer comes from the file. Approvals happen right in the thread." },
-  { title: "You approve every email", text: "Yunaki writes. You send. Always. Everything on the record." },
+  { title: "Intake that runs itself", text: "One link. Clients answer and upload from their phone. Done." },
+  { title: "Every document read", text: "Passports, green cards, I-94s. Field by field, and it never guesses." },
+  { title: "Mistakes caught early", text: "Conflicts and gaps flagged before USCIS ever sees them." },
+  { title: "Always the right form", text: "Editions, documents, and filing rules for 30 visa types." },
+  { title: "Answers in Slack", text: "Ask about any case. Get the file, not a search." },
+  { title: "Clients never go quiet", text: "Silence gets a follow-up. Written, sent, chased." },
 ];
 
 const PRACTICES = [
@@ -60,21 +61,22 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="sec-pad" id="how">
+      <section className="hub-band" id="how">
         <Reveal>
-          <div className="seclabel">the workflow</div>
-          <h2>One OS. Everything connected.</h2>
+          <div className="seclabel">the os</div>
+          <h2>Everything orbits one case file.</h2>
           <div className="prose">
-            <p>The same loop the film above shows, wire by wire.</p>
+            <p>Your clients, your inbox, your channels, your filings. One record runs them all.</p>
           </div>
         </Reveal>
-        <OsMap />
+        <CaseHub />
+        <CaseWeekChart />
       </section>
 
       <section className="sec-pad" id="today">
         <Reveal>
           <div className="seclabel">in the product today</div>
-          <h2>What pilot firms are working with now.</h2>
+          <h2>What pilot firms run today.</h2>
           <div className="prose">
             <p>Not a roadmap. These run on live immigration cases during the pilot.</p>
           </div>
@@ -90,9 +92,8 @@ export default function Home() {
             </Reveal>
           ))}
           <div className="practice-foot">
-            One rule holds everywhere. <strong>Yunaki can read, check, and
-            draft. It can never send, sign, or file.</strong>{" "}
-            <a href="/security.html">Read the guardrails</a>
+            Under all of it, walls a bank would envy.{" "}
+            <a href="/security.html">The guardrails</a>
           </div>
         </div>
       </section>
