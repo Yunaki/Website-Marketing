@@ -14,10 +14,12 @@ const CIRC = 2 * Math.PI * R;
 
 function CountUp({ to, on, suffix }: { to: number; on: boolean; suffix?: string }) {
   const reduced = useReducedMotion();
-  const [v, setV] = useState(reduced ? to : 0);
+  // Always start at 0 so the server and client render the same text; a
+  // reduce-motion client jumps straight to the value in the effect.
+  const [v, setV] = useState(0);
   useEffect(() => {
-    if (!on) return;
     if (reduced) { setV(to); return; }
+    if (!on) return;
     const c = animate(0, to, { duration: 1.3, ease: [0.22, 1, 0.36, 1], onUpdate: (x) => setV(Math.round(x)) });
     return () => c.stop();
   }, [on, reduced, to]);

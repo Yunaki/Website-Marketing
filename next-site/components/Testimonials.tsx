@@ -48,10 +48,10 @@ export function DitherPortrait({ src, eyeY }: { src: string; eyeY: number }) {
     };
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let raf = 0, running = false, blinkAt = 2600 + Math.random() * 2400;
+    let raf = 0, alive = true, visible = true, drewStill = false;
+    let blinkAt = 2600 + Math.random() * 2400;
 
     const draw = (t: number) => {
-      if (!lum) { raf = requestAnimationFrame(draw); return; }
       // the "camera": breathing zoom and a slow drift
       const zoom = reduced ? 1 : 1 + 0.016 * Math.sin(t / 4200);
       const dx = reduced ? 0 : 5 * Math.sin(t / 5100);
@@ -97,8 +97,21 @@ export function DitherPortrait({ src, eyeY }: { src: string; eyeY: number }) {
           }
         }
       }
-      if (!reduced && running) raf = requestAnimationFrame(draw);
     };
+
+    // one loop, always scheduled while mounted; drawing gated inside.
+    const loop = (t: number) => {
+      if (!alive) return;
+      if (lum && visible) {
+        if (reduced) {
+          if (!drewStill) { draw(t); drewStill = true; }
+        } else {
+          draw(t);
+        }
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
 
     img.onload = () => {
       const off = document.createElement("canvas");
@@ -112,17 +125,12 @@ export function DitherPortrait({ src, eyeY }: { src: string; eyeY: number }) {
       let sum = 0, n = 0;
       for (let y = 0; y < 40; y += 8) for (const x of [0, 8, 16, 24, 32, SW - 40, SW - 32, SW - 24, SW - 16, SW - 8]) { sum += lum[y * SW + x]; n++; }
       bg = sum / n;
-      draw(0);
     };
+    img.onerror = () => { /* leave the tile empty rather than throw */ };
 
-    if (!reduced) {
-      const io = new IntersectionObserver(([e]) => {
-        if (e.isIntersecting && !running) { running = true; raf = requestAnimationFrame(draw); }
-        else if (!e.isIntersecting) { running = false; cancelAnimationFrame(raf); }
-      }, { rootMargin: "80px" });
-      io.observe(canvas);
-      return () => { running = false; cancelAnimationFrame(raf); io.disconnect(); };
-    }
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { rootMargin: "120px" });
+    io.observe(canvas);
+    return () => { alive = false; cancelAnimationFrame(raf); io.disconnect(); };
   }, [src, eyeY]);
   return <canvas ref={ref} className="quote-canvas" style={{ width: W, height: H }} aria-hidden="true" />;
 }
