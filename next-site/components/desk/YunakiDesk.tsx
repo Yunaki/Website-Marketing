@@ -85,16 +85,24 @@ export function YunakiDesk() {
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
-    const ro = new ResizeObserver(() => setScale(el.clientWidth / 1280));
+    // Phones get a fixed readable scale inside a horizontal swipe; larger
+    // screens fit the stage to the container.
+    // Phones get the handoff's "cropped vertical cut": a fixed window at
+    // half scale, centered on the frame center where the film's camera pins
+    // its subject; the frame edges crop cinematically.
+    const compute = () => {
+      const w = el.clientWidth;
+      setScale(w < 640 ? 0.46 : w / 1280);
+    };
+    const ro = new ResizeObserver(compute);
     ro.observe(el);
-    setScale(el.clientWidth / 1280);
+    compute();
     return () => ro.disconnect();
   }, []);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const small = window.matchMedia("(max-width: 900px)").matches;
-    if (!reduced && !small) { setRunning(true); }
+    if (!reduced) { setRunning(true); }
   }, []);
 
   useEffect(() => {
@@ -113,8 +121,13 @@ export function YunakiDesk() {
   return (
     <div ref={wrapRef} className="desk-wrap" role="img"
       aria-label="Animation: one immigration case travels across Slack, the Yunaki workspace, the client portal and Gmail. The case check finds a conflict, the attorney approves the follow-up, the forms fill from the case, and the attorney reviews and submits the filing.">
-      <div className="desk-stage" style={{ transform: `scale(${scale})` }}>
-        <Piece T={T} />
+      <div className="desk-size" style={{ height: 720 * scale }}>
+        <div
+          className="desk-stage"
+          style={{ transform: `scale(${scale})`, left: "50%", marginLeft: -640 * scale }}
+        >
+          <Piece T={T} />
+        </div>
       </div>
     </div>
   );
