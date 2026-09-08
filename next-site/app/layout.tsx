@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yunaki.tech"),
-  title: "Yunaki — the operating system built for law firms",
+  title: "Yunaki - the operating system built for law firms",
   description:
     "Yunaki is the operating system built for law firms. Intake collected, documents read, mistakes caught, clients chased, forms filled. Your team just practices law.",
   alternates: { canonical: "/" },
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Yunaki",
-    title: "Yunaki — the operating system built for law firms",
+    title: "Yunaki - the operating system built for law firms",
     description:
       "The operating system built for law firms. Intake, documents, checks, follow-ups and forms, handled. Your team just practices law.",
     url: "https://yunaki.tech/",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yunaki — the operating system built for law firms",
+    title: "Yunaki - the operating system built for law firms",
     description:
       "The operating system built for law firms. Your team just practices law.",
     images: ["/assets/og.png"],
