@@ -1,4 +1,4 @@
-// "The Desk" — Slack, the client portal phone, and Gmail.
+// "The Desk": Slack, the client portal phone, and Gmail.
 // Ported from the design handoff. Copy is verbatim; timings keyed to CUES.
 import { C, F, MO, M, clamp, Pill, Dots, Win, Crane, SlackLogo, GmailLogo, type Cues, type Tone } from "./tokens";
 

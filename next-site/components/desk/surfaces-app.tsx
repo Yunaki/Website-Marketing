@@ -1,4 +1,4 @@
-// "The Desk" — the Yunaki workspace window: sidebar, case list, case detail,
+// "The Desk": the Yunaki workspace window: sidebar, case list, case detail,
 // case check, forms library. Ported from the design handoff.
 import type { ReactNode } from "react";
 import { C, F, MO, M, RAISED, PRESSED, TONE, Pill, Dots, Win, Crane, SlackLogo, GmailLogo, Glyph, NAV_GLYPH, type Cues, type Tone } from "./tokens";
