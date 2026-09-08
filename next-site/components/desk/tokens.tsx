@@ -1,4 +1,4 @@
-// "The Desk" — shared tokens, easing, cues, marks and primitives.
+// "The Desk": shared tokens, easing, cues, marks and primitives.
 // Ported from the design handoff (design/yunaki-desk.jsx). Every colour,
 // radius and shadow is lifted from the Yunaki product source; do not re-derive.
 import type { CSSProperties, ReactNode } from "react";

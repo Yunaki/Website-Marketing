@@ -1,6 +1,6 @@
 "use client";
 
-// "The Desk" — one workspace, four real surfaces, a moving camera.
+// "The Desk": one workspace, four real surfaces, a moving camera.
 // Ported from the design handoff. The whole piece is a pure function of one
 // authored clock T; the only state here is the clock and the stage scale.
 import { useEffect, useRef, useState } from "react";

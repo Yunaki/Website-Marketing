@@ -1,6 +1,6 @@
-// "The Desk" — the I-130 PDF viewer and the my.uscis.gov review browser.
+// "The Desk": the I-130 PDF viewer and the my.uscis.gov review browser.
 // Government form wording is reproduced verbatim from the published Form I-130
-// (uscis.gov, Edition 04/01/24, OMB No. 1615-0012) — it is a quoted artifact.
+// (uscis.gov, Edition 04/01/24, OMB No. 1615-0012). It is a quoted artifact.
 import { C, F, MO, M, Pill, Win, type Cues } from "./tokens";
 
 const INK = "#111111";
